@@ -10,20 +10,26 @@
 
 @implementation Tile
 
-
-+ (NSArray *)mineSymbols {
-    NSLog(@"returning mineSymbols");
-    return @[@0, @1];
+- (int)countSurroundingMines:(NSMutableArray *)tiles
+{
+    // Add method to count surrounding tiles here
+    return 0;
 }
 
-
-
-- (void)setMines:(NSString *)mine {
-    NSLog(@"Setting mines");
-    if ([[Tile mineSymbols]containsObject:mine]){
-        _mine = mine;
-    }
-}
+//
+//+ (NSArray *)mineSymbols {
+//    NSLog(@"returning mineSymbols");
+//    return @[@0, @1];
+//}
+//
+//
+//
+//- (void)setMines:(NSString *)mine {
+//    NSLog(@"Setting mines");
+//    if ([[Tile mineSymbols]containsObject:mine]){
+//        _mine = mine;
+//    }
+//}
 
 
 

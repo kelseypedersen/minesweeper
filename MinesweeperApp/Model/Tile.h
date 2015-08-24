@@ -13,6 +13,10 @@
 // Mine or no mine
 @property (strong, nonatomic) NSArray *mineSymbols;
 
-@property (nonatomic, getter=is_mine) BOOL mine;
+@property (nonatomic, getter=isMine) BOOL mine;
+@property (nonatomic, getter=isChosen) BOOL chosen;
+@property (nonatomic, getter=isDisabled) BOOL disabled;
+
+- (int)countSurroundingMines:(NSMutableArray *)tiles;
 
 @end

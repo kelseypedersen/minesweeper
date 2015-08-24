@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Board.h"
 
 @interface Game : NSObject
 
 - (void)chooseTileAtIndex:(NSUInteger)index;
+- (Tile *)tileAtIndex:(NSUInteger)index;
 
 @end

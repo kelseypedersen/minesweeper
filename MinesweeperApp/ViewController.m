@@ -12,40 +12,63 @@
 #import "Tile.h"
 
 @interface ViewController ()
+
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (strong, nonatomic) Game *game;
-
-// ** Need to connect to the rest of the buttons!
-
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *tileButton;
-
 
 - (IBAction)tilePressed:(UIButton *)sender;
 
-
 @end
+
+
 
 @implementation ViewController
 
-
-
-- (IBAction)tilePressed:(UIButton *)sender{
-    NSInteger *tileIndex = [self.tileButton indexOfObject:sender];
-    
-    // Need to update game
-    // Need to create chooseTileAtIndex
-    [self.game chooseTileAtIndex:tileIndex];
-    
-    // Need to create update UI method
-    [self updateUI];
-    
-  
+- (Board *)createBoard
+{
+    return nil;
 }
 
--
+- (Game *)game
+{
+    if (!_game)_game = [[Game alloc]init];
+    return _game;
+}
 
-- (void)updateUI{
+- (void)newGame
+{
+    self.game = [[Game alloc]init];
+    [self updateUI];
+}
+
+- (IBAction)tilePressed:(UIButton *)sender
+{
+    NSLog(@"%lu", (unsigned long)[self.tileButton indexOfObject:sender]);
+//    NSUInteger tileIndex = [self.tileButton indexOfObject:sender];
+
+//    [self.game chooseTileAtIndex:tileIndex];
     
+}
+    
+//  Need to create update UI method
+//  [self updateUI];
+
+
+- (void)updateUI
+{
+    for (UIButton *oneTileButton in self.tileButton){
+        NSInteger tileIndex = [self.tileButton indexOfObject:oneTileButton];
+        Tile *tile = [self.game tileAtIndex:tileIndex];
+        [oneTileButton setBackgroundColor:[self backgroundColorForTile:tile]];
+        oneTileButton.enabled = !tile.isDisabled;
+    }
+}
+
+- (UIColor *)backgroundColorForTile:(Tile *)tile
+{
+    // Add additional logic for UIImage later -- see cardGame
+    return [UIColor redColor];
 }
 
 

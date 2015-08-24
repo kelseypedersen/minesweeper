@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "Board.h"
 
 @interface Game ()
 @property (strong, nonatomic)NSMutableArray *tiles;
@@ -34,6 +35,49 @@
             NSLog(@"chosen!");
         }
     }
+}
+
+// If the index is less than the size of the tiles array, then return the tile index
+// If not, then return nil
+
+- (Tile *)tileAtIndex:(NSUInteger)index
+{
+    return (index < [self.tiles count]) ? self.tiles[index] : nil;
+}
+
+
+- (instancetype)initWithTileCount:(NSUInteger)count
+                       usingBoard:(Board *)board {
+    
+    self = [super init];
+    
+    if (self){
+        for (int i = 0; i < count; i++){
+            // Need to add this method
+            
+            Tile *tile = [board drawRandomTile];
+            
+            if (tile){
+                [self.tiles addObject:tile];
+            } else {
+                self = nil;
+                break;
+            }
+            
+        }
+        
+    }
+    return self;
+}
+
+- (void)shouldDisableGame
+{
+    // Need to add a ton of logic here
+}
+
+- (instancetype)init
+{
+    return nil;
 }
 
 @end

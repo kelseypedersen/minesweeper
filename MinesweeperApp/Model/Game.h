@@ -11,6 +11,10 @@
 
 @interface Game : NSObject
 
+- (instancetype)initWithTileCount:(NSUInteger)count
+                       usingBoard:(Board *)board;
+
+
 - (void)chooseTileAtIndex:(NSUInteger)index;
 - (Tile *)tileAtIndex:(NSUInteger)index;
 

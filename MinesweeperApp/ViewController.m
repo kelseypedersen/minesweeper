@@ -32,9 +32,15 @@
 
 - (Game *)game
 {
-    if (!_game)_game = [[Game alloc]init];
+    if (!_game)_game = [[Game alloc]initWithTileCount:[self.tileButton count]
+                                           usingBoard:[self createBoard]];
     return _game;
 }
+
+
+
+
+
 
 - (void)newGame
 {

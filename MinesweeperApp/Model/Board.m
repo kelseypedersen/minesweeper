@@ -16,16 +16,45 @@
 
 @end
 
-static const int TOTAL_MINES = 64;
+//static const int TOTAL_MINES = 64;
 
 @implementation Board
 
-// Creating board
+// Creating board - instantiating the tiles array which will hold the 64 tiles from the minesweeper game
+// Allocating memory and creating a pointer towards the location in memory
+// Haven't added anything to this array, yet.
 
 - (NSMutableArray *)tiles {
     if (!_tiles) _tiles = [[NSMutableArray alloc]init];
     return _tiles;
 }
+
+// Drawing random tile from the main tiles array with 10 mines and pushing in the tiles array
+// Mines are set in the initial cards array, not here
+
+- (Tile *)drawRandomTile{
+    
+    Tile *randomTile = nil;
+    
+    // Protecting against an argument of zero, which will crash the program
+    if ([self.tiles count]){
+        unsigned index = arc4random() % [self.tiles count];
+        randomTile = self.tiles[index];
+        [self.tiles removeObjectAtIndex:index];
+        
+    }
+    return randomTile;
+}
+
+// Use this method in the MineSweeperBoard.m file to add tiles to the tiles mutable array
+// Will add to the end of the array because addObject inserts at the end
+
+- (void)addTile:(Tile *)tile
+{
+    [self.tiles addObject:tile];
+}
+
+
 
 //- (void)createBoard:(Tile *)tile{
 //    for (NSInteger i = 0; i < TOTAL_MINES; i++){

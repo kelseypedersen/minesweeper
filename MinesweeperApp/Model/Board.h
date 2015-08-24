@@ -11,4 +11,8 @@
 
 @interface Board : NSObject
 
+- (void)addTile:(Tile *)tile;
+
+- (Tile *)drawRandomTile;
+
 @end

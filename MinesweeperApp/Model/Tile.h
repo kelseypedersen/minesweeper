@@ -11,6 +11,8 @@
 @interface Tile : NSObject
 
 // Mine or no mine
-@property (strong, nonatomic) NSString *contents;
+@property (strong, nonatomic) NSArray *mineSymbols;
+
+@property (nonatomic, getter=is_mine) BOOL mine;
 
 @end

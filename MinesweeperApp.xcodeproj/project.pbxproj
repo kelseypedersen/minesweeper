@@ -93,16 +93,14 @@
 		A82FAF121B8265BF00C106D9 /* MinesweeperApp */ = {
 			isa = PBXGroup;
 			children = (
-				A82FAF171B8265BF00C106D9 /* AppDelegate.h */,
-				A82FAF181B8265BF00C106D9 /* AppDelegate.m */,
 				A82FAF1A1B8265BF00C106D9 /* ViewController.h */,
 				A82FAF1B1B8265BF00C106D9 /* ViewController.m */,
 				A82FAF1D1B8265BF00C106D9 /* Main.storyboard */,
 				A82FAF201B8265BF00C106D9 /* Images.xcassets */,
 				A82FAF221B8265BF00C106D9 /* LaunchScreen.xib */,
-				A82FAF131B8265BF00C106D9 /* Supporting Files */,
 				A82FAF3C1B8265E800C106D9 /* Model */,
 				A82FAF491B82666900C106D9 /* View */,
+				A82FAF131B8265BF00C106D9 /* Supporting Files */,
 			);
 			path = MinesweeperApp;
 			sourceTree = "<group>";
@@ -110,6 +108,8 @@
 		A82FAF131B8265BF00C106D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A82FAF171B8265BF00C106D9 /* AppDelegate.h */,
+				A82FAF181B8265BF00C106D9 /* AppDelegate.m */,
 				A82FAF141B8265BF00C106D9 /* Info.plist */,
 				A82FAF151B8265BF00C106D9 /* main.m */,
 			);
@@ -456,6 +456,7 @@
 				A82FAF351B8265BF00C106D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A82FAF361B8265BF00C106D9 /* Build configuration list for PBXNativeTarget "MinesweeperAppTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +465,7 @@
 				A82FAF381B8265BF00C106D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

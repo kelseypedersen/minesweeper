@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Kelsey Pedersen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Board.h"
 
-@interface MinesweeperBoard : NSObject
+@interface MinesweeperBoard : Board
 
 @end

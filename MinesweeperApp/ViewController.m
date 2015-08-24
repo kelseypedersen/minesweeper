@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (strong, nonatomic) Game *game;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *tileButton;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *tileButtons;
 
 - (IBAction)tilePressed:(UIButton *)sender;
 
@@ -32,13 +32,10 @@
 
 - (Game *)game
 {
-    if (!_game)_game = [[Game alloc]initWithTileCount:[self.tileButton count]
+    if (!_game)_game = [[Game alloc]initWithTileCount:[self.tileButtons count]
                                            usingBoard:[self createBoard]];
     return _game;
 }
-
-
-
 
 
 
@@ -50,7 +47,7 @@
 
 - (IBAction)tilePressed:(UIButton *)sender
 {
-    NSLog(@"%lu", (unsigned long)[self.tileButton indexOfObject:sender]);
+    NSLog(@"%lu", (unsigned long)[self.tileButtons indexOfObject:sender]);
 //    NSUInteger tileIndex = [self.tileButton indexOfObject:sender];
 
 //    [self.game chooseTileAtIndex:tileIndex];
@@ -63,8 +60,8 @@
 
 - (void)updateUI
 {
-    for (UIButton *oneTileButton in self.tileButton){
-        NSInteger tileIndex = [self.tileButton indexOfObject:oneTileButton];
+    for (UIButton *oneTileButton in self.tileButtons){
+        NSInteger tileIndex = [self.tileButtons indexOfObject:oneTileButton];
         Tile *tile = [self.game tileAtIndex:tileIndex];
         [oneTileButton setBackgroundColor:[self backgroundColorForTile:tile]];
         oneTileButton.enabled = !tile.isDisabled;

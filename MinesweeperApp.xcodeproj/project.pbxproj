@@ -18,6 +18,8 @@
 		A82FAF3F1B8265F800C106D9 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF3E1B8265F800C106D9 /* Board.m */; };
 		A82FAF421B82660100C106D9 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF411B82660100C106D9 /* Game.m */; };
 		A82FAF481B82666200C106D9 /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF471B82666200C106D9 /* BoardView.m */; };
+		A8CECB361B8BA1A200966D16 /* MinesweeperTile.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB351B8BA1A200966D16 /* MinesweeperTile.m */; };
+		A8CECB391B8BAE4800966D16 /* MinesweeperBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB381B8BAE4700966D16 /* MinesweeperBoard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,10 @@
 		A82FAF411B82660100C106D9 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = Model/Game.m; sourceTree = "<group>"; };
 		A82FAF461B82666200C106D9 /* BoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardView.h; path = View/BoardView.h; sourceTree = "<group>"; };
 		A82FAF471B82666200C106D9 /* BoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardView.m; path = View/BoardView.m; sourceTree = "<group>"; };
+		A8CECB341B8BA1A200966D16 /* MinesweeperTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MinesweeperTile.h; path = Model/MinesweeperTile.h; sourceTree = "<group>"; };
+		A8CECB351B8BA1A200966D16 /* MinesweeperTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinesweeperTile.m; path = Model/MinesweeperTile.m; sourceTree = "<group>"; };
+		A8CECB371B8BAE4700966D16 /* MinesweeperBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MinesweeperBoard.h; path = Model/MinesweeperBoard.h; sourceTree = "<group>"; };
+		A8CECB381B8BAE4700966D16 /* MinesweeperBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinesweeperBoard.m; path = Model/MinesweeperBoard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,10 @@
 				A82FAF3E1B8265F800C106D9 /* Board.m */,
 				A82FAF401B82660100C106D9 /* Game.h */,
 				A82FAF411B82660100C106D9 /* Game.m */,
+				A8CECB341B8BA1A200966D16 /* MinesweeperTile.h */,
+				A8CECB351B8BA1A200966D16 /* MinesweeperTile.m */,
+				A8CECB371B8BAE4700966D16 /* MinesweeperBoard.h */,
+				A8CECB381B8BAE4700966D16 /* MinesweeperBoard.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -259,8 +269,10 @@
 				A82FAF191B8265BF00C106D9 /* AppDelegate.m in Sources */,
 				A82FAF161B8265BF00C106D9 /* main.m in Sources */,
 				A82FAF421B82660100C106D9 /* Game.m in Sources */,
+				A8CECB391B8BAE4800966D16 /* MinesweeperBoard.m in Sources */,
 				A82FAF3B1B8265E200C106D9 /* Tile.m in Sources */,
 				A82FAF3F1B8265F800C106D9 /* Board.m in Sources */,
+				A8CECB361B8BA1A200966D16 /* MinesweeperTile.m in Sources */,
 				A82FAF481B82666200C106D9 /* BoardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

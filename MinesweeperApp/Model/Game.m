@@ -24,6 +24,8 @@
     return _tiles;
 }
 
+// NEED TO ADD A TON OF LOGIC HERE FOR CHOSING TILES
+
 - (void)chooseTileAtIndex:(NSUInteger)index
 {
     // Tile selected in the view is now the tile we are referencing in this method

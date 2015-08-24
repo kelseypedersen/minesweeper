@@ -29,15 +29,14 @@
 - (void)chooseTileAtIndex:(NSUInteger)index
 {
     // Tile selected in the view is now the tile we are referencing in this method
+    NSLog(@"chosen");
     
     Tile *tile = [self tileAtIndex:index];
     
     if (!tile.isDisabled){
-        if (tile.isChosen){
-            NSLog(@"chosen!");
+        NSLog(@"chosen!");
         }
     }
-}
 
 // If the index is less than the size of the tiles array, then return the tile index
 // If not, then return nil

@@ -20,6 +20,7 @@
 		A82FAF481B82666200C106D9 /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF471B82666200C106D9 /* BoardView.m */; };
 		A8CECB361B8BA1A200966D16 /* MinesweeperTile.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB351B8BA1A200966D16 /* MinesweeperTile.m */; };
 		A8CECB391B8BAE4800966D16 /* MinesweeperBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB381B8BAE4700966D16 /* MinesweeperBoard.m */; };
+		A8CECB3C1B8BBB0300966D16 /* MinesweeperTileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB3B1B8BBB0300966D16 /* MinesweeperTileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		A8CECB351B8BA1A200966D16 /* MinesweeperTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinesweeperTile.m; path = Model/MinesweeperTile.m; sourceTree = "<group>"; };
 		A8CECB371B8BAE4700966D16 /* MinesweeperBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MinesweeperBoard.h; path = Model/MinesweeperBoard.h; sourceTree = "<group>"; };
 		A8CECB381B8BAE4700966D16 /* MinesweeperBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinesweeperBoard.m; path = Model/MinesweeperBoard.m; sourceTree = "<group>"; };
+		A8CECB3A1B8BBB0300966D16 /* MinesweeperTileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinesweeperTileViewController.h; sourceTree = "<group>"; };
+		A8CECB3B1B8BBB0300966D16 /* MinesweeperTileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinesweeperTileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 			children = (
 				A82FAF1A1B8265BF00C106D9 /* ViewController.h */,
 				A82FAF1B1B8265BF00C106D9 /* ViewController.m */,
+				A8CECB3A1B8BBB0300966D16 /* MinesweeperTileViewController.h */,
+				A8CECB3B1B8BBB0300966D16 /* MinesweeperTileViewController.m */,
 				A82FAF1D1B8265BF00C106D9 /* Main.storyboard */,
 				A82FAF201B8265BF00C106D9 /* Images.xcassets */,
 				A82FAF221B8265BF00C106D9 /* LaunchScreen.xib */,
@@ -272,6 +277,7 @@
 				A8CECB391B8BAE4800966D16 /* MinesweeperBoard.m in Sources */,
 				A82FAF3B1B8265E200C106D9 /* Tile.m in Sources */,
 				A82FAF3F1B8265F800C106D9 /* Board.m in Sources */,
+				A8CECB3C1B8BBB0300966D16 /* MinesweeperTileViewController.m in Sources */,
 				A8CECB361B8BA1A200966D16 /* MinesweeperTile.m in Sources */,
 				A82FAF481B82666200C106D9 /* BoardView.m in Sources */,
 			);

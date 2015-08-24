@@ -10,6 +10,7 @@
 #import "Game.h"
 #import "Board.h"
 #import "Tile.h"
+#import "MinesweeperTile.h"
 
 @interface ViewController ()
 
@@ -20,7 +21,6 @@
 - (IBAction)tilePressed:(UIButton *)sender;
 
 @end
-
 
 
 @implementation ViewController
@@ -47,10 +47,14 @@
 
 - (IBAction)tilePressed:(UIButton *)sender
 {
-    NSLog(@"%lu", (unsigned long)[self.tileButtons indexOfObject:sender]);
-//    NSUInteger tileIndex = [self.tileButton indexOfObject:sender];
+    
+    NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
+    
+    NSLog(@"in the tile pressed method");
 
-//    [self.game chooseTileAtIndex:tileIndex];
+    [self.game chooseTileAtIndex:tileIndex];
+    
+    NSLog(@"should go to the game method choose tile but no?");
     
 }
     

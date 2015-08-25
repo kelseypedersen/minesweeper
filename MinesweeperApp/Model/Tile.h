@@ -15,7 +15,7 @@
 
 //@property (nonatomic, getter=isMine) BOOL mine;
 @property (nonatomic, getter=isChosen) BOOL chosen;
-@property (nonatomic, getter=isDisabled) BOOL disabled;
+@property (nonatomic, getter=isInactive) BOOL inactive;
 
 - (int)countSurroundingMines:(NSMutableArray *)tiles;
 

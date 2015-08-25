@@ -7,13 +7,12 @@
 //
 
 #import "MinesweeperTile.h"
-
-static const int MINE_COUNT = 10;
-static const int TOTAL_TILE_COUNT = 64;
+#import "Game.h"
 
 @interface MinesweeperTile ()
 
 @property (nonatomic, strong) NSMutableArray *allMineSymbols;
+@property (nonatomic) NSInteger *mineCount;
 
 @end
 
@@ -23,32 +22,13 @@ static const int TOTAL_TILE_COUNT = 64;
 
 // X == mine, O == no mine
 
-
 + (NSArray *)totalGamePieces {
     return @[@"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O"];
 }
 
-//- (void)setMine:(NSString *)mine
-//{
-//    // Sending containObject to the array created below
-//    if ([[MinesweeperTile mineSymbols]containsObject:mine]){
-//        _mine = mine;
-//    }
-//}
-//
-//- (NSString *) mine
-//{
-//    return _mine ? _mine : @"?";
-//}
-//
-//- (NSString *)contents
-//{
-//    NSArray *mineStrings = [MinesweeperTile allMineSymbols];
-//    // Not sure why this isn't working...
-//    // Come back to this
-//    // Trying to return the contents of one tile
-//    return self.mine;
-//}
+
+
+
 
 
 @end

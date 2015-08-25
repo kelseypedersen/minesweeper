@@ -14,8 +14,11 @@
 - (instancetype)initWithTileCount:(NSUInteger)count
                        usingBoard:(Board *)board;
 
-
 - (void)chooseTileAtIndex:(NSUInteger)index;
 - (Tile *)tileAtIndex:(NSUInteger)index;
+
+- (int)surroundingMines:(NSInteger)index;
+- (int)countSurroundingMines:(NSMutableArray *)tiles;
+- (void)inactivateAllSurroundingMines;
 
 @end

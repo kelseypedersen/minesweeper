@@ -35,7 +35,6 @@
     return _totalTiles;
 }
 
-
 // Drawing random tile from the main tiles array with 10 mines and pushing in the tiles array
 // Mines are set in the initial cards array, not here
 
@@ -61,8 +60,6 @@
 {
     [self.tiles addObject:tile];
 }
-
-
 
 
 //- (void)randomSymbol:(Tile *)mineSymbols {

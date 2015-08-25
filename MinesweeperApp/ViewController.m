@@ -35,18 +35,15 @@
 {
     if (!_game)_game = [[Game alloc]initWithTileCount:[self.tileButtons count]
                                            usingBoard:[self createBoard]];
-    NSLog(@"view controller - initializing new game");
     return _game;
 }
 
 
-
 - (void)newGame
 {
-    NSLog(@"view controller - new game method");
-    self.game = [[Game alloc]initWithTileCount:[self.tileButtons count]
-                                    usingBoard:[self createBoard]];
-    [self updateUI];
+    NSLog(@"view controller - creating new game");
+    self.game = [[Game alloc]initWithTileCount:[self.tileButtons count] usingBoard:[self createBoard]];
+//    [self updateUI];
 }
 
 
@@ -54,13 +51,13 @@
 - (IBAction)tilePressed:(UIButton *)sender
 {
     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
-    NSLog(@"%lu", (unsigned long)tileIndex);
+    NSLog(@"PRESSED TILE INDEX: %lu", (unsigned long)tileIndex);
     
-    // Was the game created?
+//  [self.game chooseTileAtIndex:tileIndex];
     
-    [self.game chooseTileAtIndex:tileIndex];
-    
-    
+    [self.game surroundingMines:tileIndex];
+    [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
+    [sender setBackgroundColor:[UIColor grayColor]];
 //  [self updateUI];
 
 }
@@ -72,7 +69,7 @@
         NSInteger tileIndex = [self.tileButtons indexOfObject:oneTileButton];
         Tile *tile = [self.game tileAtIndex:tileIndex];
         [oneTileButton setBackgroundColor:[self backgroundColorForTile:tile]];
-        oneTileButton.enabled = !tile.disabled;
+//        oneTileButton.enabled = !tile.isInactive;
     }
 }
 
@@ -81,7 +78,6 @@
     // Add additional logic for UIImage later -- see cardGame
     return [UIColor redColor];
 }
-
 
 
 - (void)viewDidLoad {

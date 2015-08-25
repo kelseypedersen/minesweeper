@@ -23,38 +23,10 @@ static const int TOTAL_TILE_COUNT = 64;
 
 // X == mine, O == no mine
 
-// Class method
 
-// Creating the mine symbols array which contains all the pieces for the minesweeper game
-// We are going to pull random indexes from this array by copying the array, and then deleting the items in the array as we create our unique boads for each game.
-
-+ (NSMutableArray *)totalGamePieces {
-    NSLog(@"%@", @"hello");
-    
-    NSMutableArray *totalGamePieces;
-    
-    for (int i = 0; i < TOTAL_TILE_COUNT; i++){
-        NSLog(@"%d", i);
-        NSMutableArray *totalGamePieces = [[NSMutableArray alloc]init];
-        if ([totalGamePieces count] < MINE_COUNT){
-            [totalGamePieces addObject:@"X"];
-        }else{
-            [totalGamePieces addObject:@"O"];
-        }
-    }
-    NSLog(@"its in the total game pieces method");
-    NSLog(@"totalGamePieces: %@", totalGamePieces);
-    return totalGamePieces;
++ (NSArray *)totalGamePieces {
+    return @[@"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O"];
 }
-
-
-
-
-
-
-
-    
-//    return @[@"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O"];
 
 //- (void)setMine:(NSString *)mine
 //{

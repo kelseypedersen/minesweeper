@@ -72,7 +72,7 @@
         NSInteger tileIndex = [self.tileButtons indexOfObject:oneTileButton];
         Tile *tile = [self.game tileAtIndex:tileIndex];
         [oneTileButton setBackgroundColor:[self backgroundColorForTile:tile]];
-        oneTileButton.enabled = !tile.isDisabled;
+        oneTileButton.enabled = !tile.disabled;
     }
 }
 

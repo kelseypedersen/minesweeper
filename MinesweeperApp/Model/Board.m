@@ -13,7 +13,7 @@
 @interface Board ()
 
 @property (strong, nonatomic) NSMutableArray *tiles;
-@property (strong, nonatomic) NSMutableArray *totalMinesCopy;
+@property (strong, nonatomic) NSMutableArray *totalTiles;
 
 @end
 
@@ -24,10 +24,15 @@
 // Allocating memory and creating a pointer towards the location in memory
 // Haven't added anything to this array, yet.
 
-
+// Creating the memory and space capacity to create a tiles array, aka board
 - (NSMutableArray *)tiles {
     if (!_tiles) _tiles = [[NSMutableArray alloc]init];
     return _tiles;
+}
+
+- (NSMutableArray *)totalTiles {
+    if (!_totalTiles) _totalTiles = [[NSMutableArray alloc]initWithArray:[MinesweeperTile totalGamePieces]];
+    return _totalTiles;
 }
 
 
@@ -39,14 +44,13 @@
     
     Tile *randomTile = nil;
     
-    if ([self.tiles count]) {
-        unsigned index = arc4random() % [self.tiles count];
-        randomTile = self.tiles[index];
-        [self.tiles removeObjectAtIndex:index];
+    if ([self.totalTiles count]) {
+        unsigned index = arc4random() % [self.totalTiles count];
+        randomTile = self.totalTiles[index];
+        [self.totalTiles removeObjectAtIndex:index];
     }
     
     return randomTile;
-    
 }
 
 

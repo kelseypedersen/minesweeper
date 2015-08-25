@@ -16,7 +16,6 @@
 @implementation MinesweeperTileViewController
 
 - (Board *)createBoard {
-    NSLog(@"minesweepertilevc - in the createBoard method");
     return [[MinesweeperBoard alloc]init];
 }
 

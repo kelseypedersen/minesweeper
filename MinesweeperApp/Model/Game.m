@@ -34,10 +34,10 @@
     
     Tile *tile = [self tileAtIndex:index];
     
-    if (!tile.isDisabled){
-        NSLog(@"chosen again!");
-        tile.chosen = YES;
-    }
+//    if (!tile.isDisabled){
+//        NSLog(@"chosen again!");
+//        tile.chosen = YES;
+//    }
 }
 
 // If the index is less than the size of the tiles array, then return the tile index
@@ -57,20 +57,11 @@
 - (instancetype)initWithTileCount:(NSUInteger)count
                        usingBoard:(Board *)board {
     
-    NSLog(@"game.m - game initialize method");
-    
     self = [super init];
     
     if (self){
-        NSLog(@"game.m - there is a self");
         for (int i = 0; i < count; i++){
-            NSLog(@"game.m - in the for loop");
             Tile *tile = [board drawRandomTile];
-            NSLog(@"game.m - a tile was drawn");
-            
-            NSLog(@"game.m - randomly drawn tile: %@", tile);
-            // drawRandomTile is returning null and not sure why...
-            
             
             if (tile){
                 [self.tiles addObject:tile];
@@ -78,15 +69,11 @@
                 self = nil;
                 break;
             }
-            NSLog(@"%@", self.tiles);
-            NSLog(@"%@", self);
-            
         }
+        NSLog(@"game.m - returning self.tiles: %@", self.tiles);
+        NSLog(@"game.m - returning self: %@", self);
         
     }
-//    NSLog(@"a new board was created");
-//    NSLog(@"%@", self);
-//    NSLog(@"returning tiles: %@", self.tiles);
     return self;
 }
 

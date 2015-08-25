@@ -27,6 +27,7 @@
 
 - (Board *)createBoard
 {
+    NSLog(@"view controller - create board method");
     return nil;
 }
 
@@ -34,6 +35,7 @@
 {
     if (!_game)_game = [[Game alloc]initWithTileCount:[self.tileButtons count]
                                            usingBoard:[self createBoard]];
+    NSLog(@"view controller - initializing new game");
     return _game;
 }
 
@@ -41,25 +43,27 @@
 
 - (void)newGame
 {
-    self.game = [[Game alloc]init];
+    NSLog(@"view controller - new game method");
+    self.game = [[Game alloc]initWithTileCount:[self.tileButtons count]
+                                    usingBoard:[self createBoard]];
     [self updateUI];
 }
 
+
+
 - (IBAction)tilePressed:(UIButton *)sender
 {
-    
     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
+    NSLog(@"%lu", (unsigned long)tileIndex);
     
-    NSLog(@"in the tile pressed method");
-
+    // Was the game created?
+    
     [self.game chooseTileAtIndex:tileIndex];
     
-    NSLog(@"should go to the game method choose tile but no?");
     
-}
-    
-//  Need to create update UI method
 //  [self updateUI];
+
+}
 
 
 - (void)updateUI

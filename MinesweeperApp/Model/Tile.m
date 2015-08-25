@@ -16,6 +16,8 @@
     return 0;
 }
 
+
+
 //
 //+ (NSArray *)mineSymbols {
 //    NSLog(@"returning mineSymbols");

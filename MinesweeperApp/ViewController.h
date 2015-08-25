@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Board.h"
 
 @interface ViewController : UIViewController
 
+// for subclasses
+- (Board *)createBoard; //abstract
 
 @end
 

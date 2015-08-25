@@ -18,6 +18,7 @@
     // Use self as protection from continuing with nil.
     
     self = [super init];
+    NSLog(@"minesweeperboard.m - creating new board");
     if (self){
          // Nested itineration through all the suits and ranks in the suit
         

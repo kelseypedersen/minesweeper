@@ -17,7 +17,7 @@
 // Contains a single character representing mine - if nil, it hasn't been set yet
 @property (strong, nonatomic) NSString *mine;
 
-+ (NSArray *)totalGamePieces;
++ (NSMutableArray *)totalGamePieces;
 
 
 @end

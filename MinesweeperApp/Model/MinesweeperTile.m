@@ -28,20 +28,29 @@ static const int TOTAL_TILE_COUNT = 64;
 // Creating the mine symbols array which contains all the pieces for the minesweeper game
 // We are going to pull random indexes from this array by copying the array, and then deleting the items in the array as we create our unique boads for each game.
 
-+ (NSArray *)totalGamePieces {
++ (NSMutableArray *)totalGamePieces {
+    NSLog(@"%@", @"hello");
     
-    NSMutableArray *allMineSymbols = nil;
+    NSMutableArray *totalGamePieces;
     
     for (int i = 0; i < TOTAL_TILE_COUNT; i++){
-        NSMutableArray *allMineSymbols = [[NSMutableArray alloc]init];
-        if ([allMineSymbols count] < MINE_COUNT){
-            [allMineSymbols addObject:@"X"];
+        NSLog(@"%d", i);
+        NSMutableArray *totalGamePieces = [[NSMutableArray alloc]init];
+        if ([totalGamePieces count] < MINE_COUNT){
+            [totalGamePieces addObject:@"X"];
         }else{
-            [allMineSymbols addObject:@"O"];
+            [totalGamePieces addObject:@"O"];
         }
     }
-    return allMineSymbols;
+    NSLog(@"its in the total game pieces method");
+    NSLog(@"totalGamePieces: %@", totalGamePieces);
+    return totalGamePieces;
 }
+
+
+
+
+
 
 
     

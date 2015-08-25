@@ -39,12 +39,33 @@
 }
 
 
-- (void)newGame
-{
-    NSLog(@"view controller - creating new game");
-    self.game = [[Game alloc]initWithTileCount:[self.tileButtons count] usingBoard:[self createBoard]];
-//    [self updateUI];
+# pragma mark Reset Game Button
+
+- (IBAction)restartGameAlert {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Retile, fo real?"
+                                                    message:@"This will reset your game"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Okay", nil];
+    
+    [alert show];
 }
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self newBoard];
+    }
+}
+
+- (void)newBoard{
+    self.game = [[Game alloc]initWithTileCount:[self.tileButtons count]
+                                    usingBoard:[self createBoard]];
+    
+    //    [self updateUI];
+}
+
 
 
 
@@ -56,19 +77,20 @@
 //  [self.game chooseTileAtIndex:tileIndex];
     
     [self.game surroundingMines:tileIndex];
+    [self.game inactivateAllSurroundingMines:tileIndex];
     [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
     [sender setBackgroundColor:[UIColor grayColor]];
-//  [self updateUI];
+//    [self updateUI];
 
 }
 
 
 - (void)updateUI
 {
-    for (UIButton *oneTileButton in self.tileButtons){
-        NSInteger tileIndex = [self.tileButtons indexOfObject:oneTileButton];
+    for (UIButton *tileButton in self.tileButtons){
+        NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
         Tile *tile = [self.game tileAtIndex:tileIndex];
-        [oneTileButton setBackgroundColor:[self backgroundColorForTile:tile]];
+        [tileButton setBackgroundColor:[self backgroundColorForTile:tile]];
 //        oneTileButton.enabled = !tile.isInactive;
     }
 }

@@ -10,10 +10,14 @@
 #import "Board.h"
 
 @interface Game ()
-@property (strong, nonatomic)NSMutableArray *tiles;
+@property (strong, nonatomic) NSMutableArray *tiles;
 @end
 
 @implementation Game
+
+#pragma mark Tiles for Game
+
+// Lazy instantiation of the tiles array for each game
 
 - (NSMutableArray *)tiles
 {
@@ -22,25 +26,40 @@
 }
 
 
+
+- (void)shouldDisableGame
+{
+    for (Tile *tile in self.tiles){
+        tile.chosen = YES;
+    }
+    NSLog(@"###################### disabling game");
+}
+
+
+
+
 #pragma mark Counting Mines
+
 // Counts the surrounding mines to the pressed tile button
 // Returns the mine count
 
-
-- (void)chooseTileAtIndex:(NSUInteger)index
+- (BOOL)chooseTileAtIndex:(NSUInteger)index
 {
     Tile *tile = [self tileAtIndex:index];
-    NSLog(@"returning tile: %@", tile);
     
     if ([tile isEqual: @"X"]){
-        [self shouldDisableGame];
+        return YES;
+
+//        [self shouldDisableGame];
+        
         // deactivate game
         // show all @"X"s
         // for loop through the board
     } else {
         if ([self surroundingMines:index] == 0){
-            [self inactivateAllSurroundingMines:index];
+//            [self inactivateAllSurroundingMines:index];
         }
+        return NO;
     }
 }
 
@@ -92,23 +111,12 @@
 
 
 
-- (void)inactivateAllSurroundingMines:(NSInteger)index{
-    NSLog(@"INDEX: %d", index);
-    if (index % 8 != 0){
-        // To do disable the button one to the left of the tile
-    }
-}
-
-
 - (Tile *)tileAtIndex:(NSUInteger)index
 {
     return (index < [self.tiles count]) ? self.tiles[index] : nil;
 }
 
-
-// Drawing from the drawRandomTile method in the board
-// Adding to new array of tiles
-// returning array of tile
+// Drawing from the drawRandomTile method in the board; Adding to new array of tiles; returning array of tile
 
 - (instancetype)initWithTileCount:(NSUInteger)count
                        usingBoard:(Board *)board {
@@ -118,7 +126,8 @@
     if (self){
         for (int i = 0; i < count; i++){
             Tile *tile = [board drawRandomTile];
-            
+            NSLog(@"tile from the draw random tile: %@", tile);
+
             if (tile){
                 [self.tiles addObject:tile];
             } else {
@@ -126,16 +135,42 @@
                 break;
             }
         }
-        NSLog(@"game.m - returning self.tiles: %@", self.tiles);
+        NSLog(@"game.m - returning self.tiles: %@", self);
         
     }
     return self;
 }
 
-- (void)shouldDisableGame
-{
-    NSLog(@"######################disabling game");
-}
+
+
+//- (void)inactivateAllSurroundingMines:(NSUInteger)index{
+//
+//    NSLog(@"SELF: %@", self);
+//
+////    if (index % 8 != 0){
+////        NSLog(@"in the inactivateallsurroundingmines index 8 check loop");
+////        Tile *tile = [self tileAtIndex:index];
+////        NSLog(@"LEFT TILE! %@", tile);
+////        if (!tile.isMatched){
+////            NSLog(@"the left tile is being matched");
+////            tile.matched = NO;
+////        }
+////    }
+//
+////    if (tileIndex % 8 != 0){
+////        UIButton *leftTile = self.tileButtons[tileIndex - 1];
+////        leftTile.enabled = NO;
+////        [leftTile setTitle:[NSString stringWithFormat:@"%s", "L"] forState:UIControlStateNormal];
+////    }
+//
+//
+//}
+
+
+
+
+
+
 
 - (instancetype)init
 {

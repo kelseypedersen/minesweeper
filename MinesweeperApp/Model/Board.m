@@ -48,7 +48,7 @@
         randomTile = self.totalTiles[index];
         [self.totalTiles removeObjectAtIndex:index];
     }
-    
+    NSLog(@"RANDOM TILE: %@", randomTile);
     return randomTile;
 }
 
@@ -62,24 +62,6 @@
 }
 
 
-//- (void)randomSymbol:(Tile *)mineSymbols {
-//    NSInteger *randomIndex = arc4random() % 2;
-//    [self.board addObject:tile.is_mine[0]];
-//    
-//}
-
-//- (int)countMines:(Board *)board {
-//    
-//    int currentMineCount = 0;
-//    
-//    for (Tile *tile in board){
-//        
-//        if (tile.is_mine == YES) {
-//            currentMineCount += 1;
-//        }
-//    }
-//    return currentMineCount;
-//}
 
 
 

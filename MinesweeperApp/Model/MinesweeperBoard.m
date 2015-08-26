@@ -9,6 +9,8 @@
 #import "MinesweeperBoard.h"
 #import "MinesweeperTile.h"
 
+const int COUNT = 64;
+
 @implementation MinesweeperBoard
 
 -(instancetype)init{
@@ -19,13 +21,16 @@
     
     self = [super init];
     if (self){
+
         for (NSString *mine in [MinesweeperTile totalGamePieces]){
+            
             MinesweeperTile *tile = [[MinesweeperTile alloc]init];
             tile.mine = mine;
             // Inheriting method from Board
             [self addTile:tile];
         }
     }
+    NSLog(@"minesweeper board: %@", self);
     return self;
 }
 

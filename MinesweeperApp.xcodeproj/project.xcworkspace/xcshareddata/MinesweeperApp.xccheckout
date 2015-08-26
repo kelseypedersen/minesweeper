@@ -7,34 +7,34 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>051C72DC-28BB-44E1-A978-EA6078F8A736</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>MinesweeperApp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>09224F9CB78A8F8828683140717CEE220BD46B01</key>
-		<string>github.com:kpedersen00/corelocation.git</string>
+		<key>0B76ACE09B297C15D3A38948597F6377E30A1370</key>
+		<string>github.com:kpedersen00/minesweeper.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MinesweeperApp/MinesweeperApp.xcodeproj/project.xcworkspace</string>
+	<string>MinesweeperApp.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>09224F9CB78A8F8828683140717CEE220BD46B01</key>
-		<string>../../..</string>
+		<key>0B76ACE09B297C15D3A38948597F6377E30A1370</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:kpedersen00/corelocation.git</string>
+	<string>github.com:kpedersen00/minesweeper.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>09224F9CB78A8F8828683140717CEE220BD46B01</string>
+	<string>0B76ACE09B297C15D3A38948597F6377E30A1370</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>09224F9CB78A8F8828683140717CEE220BD46B01</string>
+			<string>0B76ACE09B297C15D3A38948597F6377E30A1370</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CoreLocation</string>
+			<string>MinesweeperApp</string>
 		</dict>
 	</array>
 </dict>

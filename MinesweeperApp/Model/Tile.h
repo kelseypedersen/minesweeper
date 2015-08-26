@@ -13,7 +13,6 @@
 // Mine or no mine
 @property (strong, nonatomic) NSArray *mineSymbols;
 
-//@property (nonatomic, getter=isMine) BOOL mine;
 @property (nonatomic, getter=isChosen) BOOL chosen;
 @property (nonatomic, getter=isMatched) BOOL matched;
 

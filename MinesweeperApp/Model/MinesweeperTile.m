@@ -18,13 +18,35 @@
 
 @implementation MinesweeperTile
 
+
 @synthesize mine = _mine;
 
-// X == mine, O == no mine
++ (NSArray *)validSymbols {
+    return @[@"X", @"O"];
+}
+
+
+- (void)setMine:(NSString *)mine{
+    // Sending containObject: to the array of created below
+    if ([[MinesweeperTile validSymbols]containsObject:mine]){
+        mine = _mine;
+    }
+}
+
+- (NSString *)mine {
+    return _mine ? _mine : @"no mine set";
+}
+
+
+
+
+
 
 + (NSArray *)totalGamePieces {
     return @[@"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O"];
 }
+
+
 
 
 

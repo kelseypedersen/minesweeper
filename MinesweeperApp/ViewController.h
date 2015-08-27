@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Board.h"
 
-@interface ViewController : UIViewController
+
+// Add protocol for alert view in viewcontroller.m file
+@interface ViewController : UIViewController <UIAlertViewDelegate>
 
 // for subclasses
 - (Board *)createBoard; //abstract

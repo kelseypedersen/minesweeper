@@ -10,6 +10,15 @@
 
 @implementation Tile
 
+@synthesize selected = _selected;
+
+- (BOOL)selected {
+    return _selected;
+}
+
+- (void)setSelected:(BOOL)selected {
+    _selected = selected;
+}
 
 
 @end

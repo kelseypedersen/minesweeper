@@ -17,6 +17,13 @@
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (strong, nonatomic) Game *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *tileButtons;
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *validateLabel;
+
+
+//
+//- (IBAction)validateButton;
 
 - (IBAction)tilePressed:(UIButton *)sender;
 
@@ -52,6 +59,7 @@
 }
 
 
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
@@ -62,9 +70,10 @@
 - (void)newBoard{
     self.game = [[Game alloc]initWithTileCount:[self.tileButtons count]
                                     usingBoard:[self createBoard]];
+    
     for (UIButton *tileButton in self.tileButtons){
-        [tileButton setTitle:nil forState:UIControlStateNormal];
-        [tileButton setBackgroundColor:[UIColor grayColor]];
+        [tileButton setTitle:@"" forState:UIControlStateNormal];
+        [tileButton setBackgroundColor:[UIColor greenColor]];
     }
     //    [self updateUI];
 }
@@ -72,20 +81,40 @@
 
 # pragma mark Tile Pressed
 
+- (IBAction)validateButton {
+    // For all buttons on the board
+    for (UIButton *tileButton in self.tileButtons){
+        NSUInteger tileButtonIndex = [self.tileButtons indexOfObject:tileButton];
+        // And for all buttons still enabled
+        if (tileButton.enabled){
+            if (![[self.game tileAtIndex:tileButtonIndex] isEqual: @"X"]){
+                [self disableBoard:tileButton];
+            }
+        }
+    }
+}
+
 - (IBAction)tilePressed:(UIButton *)sender
 {
+    NSLog(@"tile pressed %@", sender);
+    
     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
     
+    // Clicked on a mine --> End game
     if ([self.game chooseTileAtIndex:tileIndex] == YES){
         [self disableBoard:sender];
     }
-    if ([self.game surroundingMines:tileIndex] == 0){
+    
+    // Clicked on a tile with no mines surrounding --> Disable surrounding mines
+    else if ([self.game surroundingMines:tileIndex] == 0){
         [self disableMines:sender];
+        [sender setBackgroundColor:[UIColor grayColor]];
+        
+    // Clicked on a tile with mines surrounding it --> Show # of mines surrounding
+    }else {
+        [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
+        [sender setBackgroundColor:[UIColor grayColor]];
     }
-    
-    [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
-    
-    [sender setBackgroundColor:[UIColor grayColor]];
 //    [self updateUI];
 
 }
@@ -152,11 +181,11 @@
 }
 
 - (void)disableBoard:(UIButton *)tile{
-    
+    [tile setTitle:[NSString stringWithFormat:@"X"] forState:UIControlStateNormal];
     for (UIButton *tileButton in self.tileButtons){
         
         if (tileButton.enabled == NO){
-            [tileButton setBackgroundColor:[UIColor redColor]];
+            
         } else {
             tileButton.enabled = NO;
         }
@@ -165,7 +194,14 @@
         NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
         Tile *tile = [self.game tileAtIndex:tileIndex];
         [tileButton setTitle:[NSString stringWithFormat:@"%@", tile] forState:UIControlStateNormal];
+        [tileButton setBackgroundColor:[UIColor grayColor]];
+        [self.validateLabel setBackgroundImage:[self disableBoardValidateImageForGame] forState:UIControlStateNormal];
+        
     }
+}
+         
+- (UIImage *)disableBoardValidateImageForGame {
+    return [UIImage imageNamed:@"smiley-face-dead"];
 }
 
 
@@ -184,12 +220,13 @@
 - (UIColor *)backgroundColorForTile:(Tile *)tile
 {
     // Add additional logic for UIImage later -- see cardGame
-    return [UIColor redColor];
+    return [UIColor greenColor];
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 //    [Board createBoard];
 
     // Do any additional setup after loading the view, typically from a nib.

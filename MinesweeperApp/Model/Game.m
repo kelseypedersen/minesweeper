@@ -27,17 +27,6 @@
 
 
 
-- (void)shouldDisableGame
-{
-    for (Tile *tile in self.tiles){
-        tile.chosen = YES;
-    }
-    NSLog(@"###################### disabling game");
-}
-
-
-
-
 #pragma mark Counting Mines
 
 // Counts the surrounding mines to the pressed tile button
@@ -140,35 +129,6 @@
     }
     return self;
 }
-
-
-
-//- (void)inactivateAllSurroundingMines:(NSUInteger)index{
-//
-//    NSLog(@"SELF: %@", self);
-//
-////    if (index % 8 != 0){
-////        NSLog(@"in the inactivateallsurroundingmines index 8 check loop");
-////        Tile *tile = [self tileAtIndex:index];
-////        NSLog(@"LEFT TILE! %@", tile);
-////        if (!tile.isMatched){
-////            NSLog(@"the left tile is being matched");
-////            tile.matched = NO;
-////        }
-////    }
-//
-////    if (tileIndex % 8 != 0){
-////        UIButton *leftTile = self.tileButtons[tileIndex - 1];
-////        leftTile.enabled = NO;
-////        [leftTile setTitle:[NSString stringWithFormat:@"%s", "L"] forState:UIControlStateNormal];
-////    }
-//
-//
-//}
-
-
-
-
 
 
 

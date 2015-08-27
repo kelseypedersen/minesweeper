@@ -21,22 +21,22 @@
 
 @synthesize mine = _mine;
 
-+ (NSArray *)validSymbols {
++ (NSArray *)validSymbols
+{
     return @[@"X", @"O"];
 }
 
 
-- (void)setMine:(NSString *)mine{
-    // Sending containObject: to the array of created below
-    if ([[MinesweeperTile validSymbols]containsObject:mine]){
-        mine = _mine;
-    }
+- (void)setMine:(BOOL)mine
+{
+        _mine = mine;
 }
 
-- (NSString *)mine {
-    return _mine ? _mine : @"no mine set";
-}
 
+- (BOOL)mine
+{
+    return _mine;
+}
 
 
 

@@ -730,6 +730,25 @@
                                             <action selector="restartGameAlert" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6WH-Vy-RKP"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="es4-zl-pGd">
+                                        <rect key="frame" x="253" y="25" width="59" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="0.0045649803879999999" blue="0.023845515469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="32"/>
+                                        <color key="textColor" red="1" green="0.0045649803879999999" blue="0.023845515469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NHA-nK-CvN">
+                                        <rect key="frame" x="139" y="25" width="42" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="smiley-face-with-mustache">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="validateButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="O6m-l7-mYH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89599116160000003" green="0.89599116160000003" blue="0.89599116160000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -738,6 +757,8 @@
                     </view>
                     <connections>
                         <outlet property="gameView" destination="db6-Ij-tf5" id="9rh-YT-bQW"/>
+                        <outlet property="timerLabel" destination="es4-zl-pGd" id="zYD-LN-26X"/>
+                        <outlet property="validateLabel" destination="NHA-nK-CvN" id="IQC-6m-4SX"/>
                         <outletCollection property="tileButtons" destination="0xd-td-UZQ" id="2lh-qq-2uV"/>
                         <outletCollection property="tileButtons" destination="zhm-uh-REY" id="LpE-6Z-63Q"/>
                         <outletCollection property="tileButtons" destination="0CH-86-AsC" id="Vim-Gf-GaB"/>
@@ -809,6 +830,9 @@
             <point key="canvasLocation" x="79" y="350"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="smiley-face-with-mustache" width="225" height="224"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -10,11 +10,9 @@
 
 @interface Tile : NSObject
 
-// Mine or no mine
+
 @property (strong, nonatomic) NSArray *mineSymbols;
 
-//@property (nonatomic, getter=isChosen) BOOL chosen;
-//@property (nonatomic, getter=isMatched) BOOL matched;
 @property (nonatomic) BOOL disabled;
 
 

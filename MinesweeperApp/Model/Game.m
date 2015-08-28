@@ -27,6 +27,64 @@
 }
 
 
+- (instancetype)initWithTileCount:(NSUInteger)count
+                       usingBoard:(Board *)board {
+    
+    self = [super init];
+    
+    if (self){
+        for (int i = 0; i < count; i++){
+            Tile *tile = [board drawRandomTile];
+            if (tile){
+                [self.tiles addObject:tile];
+            } else {
+                self = nil;
+                break;
+            }
+        }
+    }
+    return self;
+}
+
+
+- (instancetype)init
+{
+    return nil;
+}
+
+
+- (void)validateTiles{
+    for (MinesweeperTile *tile in self.tiles){
+        if ((tile.disabled != NO) && ([tile.mine isEqual: @"X"])){
+            NSLog(@"correct tiles so far!");
+        } else {
+            [self disableBoard];
+        }
+    }
+}
+
+
+- (void)cheat{
+    for (MinesweeperTile *tile in self.tiles){
+        if ((tile.disabled == NO) && ([tile.mine isEqual: @"X"])){
+            for (int i = 0; i < (arc4random() % 4); i++){
+                tile.disabled = YES;
+            }
+        }
+    }
+}
+
+
+
+- (Tile *)tileAtIndex:(NSUInteger)index
+{
+    return (index < [self.tiles count]) ? self.tiles[index] : nil;
+}
+
+// Drawing from the drawRandomTile method in the board; Adding to new array of tiles; returning array of tile
+
+
+
 #pragma mark Counting Mines
 
 // Counts the surrounding mines to the pressed tile button
@@ -52,6 +110,8 @@
         // Taken care of in the VC
     }
 }
+
+
 
 - (int)surroundingMines:(NSInteger)index {
     int mineCount = 0;
@@ -144,7 +204,6 @@
 }
 
 
-
 - (void)disableBoard
 {
     for (Tile *tile in self.tiles){
@@ -154,61 +213,5 @@
     }
 }
 
-
-- (void)validateTiles{
-    for (MinesweeperTile *tile in self.tiles){
-        if ((tile.disabled != NO) && ([tile.mine isEqual: @"X"])){
-            NSLog(@"correct tiles so far!");
-        } else {
-            [self disableBoard];
-        }
-    }
-}
-
-
-- (void)cheat{
-    for (MinesweeperTile *tile in self.tiles){
-        if ((tile.disabled == NO) && ([tile.mine isEqual: @"X"])){
-            for (int i = 0; i < (arc4random() % 4); i++){
-                tile.disabled = YES;
-            }
-        }
-    }
-}
-
-
-
-- (Tile *)tileAtIndex:(NSUInteger)index
-{
-    return (index < [self.tiles count]) ? self.tiles[index] : nil;
-}
-
-// Drawing from the drawRandomTile method in the board; Adding to new array of tiles; returning array of tile
-
-- (instancetype)initWithTileCount:(NSUInteger)count
-                       usingBoard:(Board *)board {
-    
-    self = [super init];
-    
-    if (self){
-        for (int i = 0; i < count; i++){
-            Tile *tile = [board drawRandomTile];
-            if (tile){
-                [self.tiles addObject:tile];
-            } else {
-                self = nil;
-                break;
-            }
-        }
-    }
-    return self;
-}
-
-
-
-- (instancetype)init
-{
-    return nil;
-}
 
 @end

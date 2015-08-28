@@ -21,10 +21,8 @@
 @property (strong, nonatomic)MinesweeperTileViewController *minesweepertilevc;
 @property (weak, nonatomic) IBOutlet UIButton *validateLabel;
 
-
 - (IBAction)validateButton;
 - (IBAction)cheatButton;
-
 - (IBAction)tilePressed:(UIButton *)sender;
 
 @end
@@ -68,8 +66,6 @@
     } else {
         [sender setTintColor:[UIColor blackColor]];
     }
-    
-    NSLog(@"title label: %@", sender.titleLabel.textColor);
 }
 
 # pragma mark New Game
@@ -103,22 +99,17 @@
 }
 
 
-# pragma mark Validate
 
 - (IBAction)validateButton {
     [self.game validateTiles];
 }
 
 
-# pragma mark Cheat
-
 - (IBAction)cheatButton {
     [self.game cheat];
     [self updateUI];
 }
 
-
-# pragma mark Update
 // Runs every move to update the board
 - (void)updateUI
 {
@@ -131,7 +122,6 @@
         else if (tile.disabled){
             [tileButton setBackgroundColor:[UIColor grayColor]];
         }
-        
         tileButton.enabled = !tile.disabled;
     
     }

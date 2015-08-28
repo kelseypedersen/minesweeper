@@ -10,8 +10,14 @@
 #import "Board.h"
 #import "MinesweeperTile.h"
 
+// Random, could be anything.
+
+
 @interface Game ()
 @property (strong, nonatomic) NSMutableArray *tiles;
+@property (strong, nonatomic) NSMutableArray *activeMines;
+@property (nonatomic) NSInteger *tileCheatCount;
+
 @end
 
 @implementation Game
@@ -53,27 +59,35 @@
 }
 
 
-- (void)validateTiles{
+- (NSString *)validateTiles{
+    NSString *valid = @"NO";
     for (MinesweeperTile *tile in self.tiles){
         if ((tile.disabled != NO) && ([tile.mine isEqual: @"X"])){
-            NSLog(@"correct tiles so far!");
+            valid = @"YES";
         } else {
             [self disableBoard];
         }
     }
+    return valid;
 }
-
 
 - (void)cheat{
+    NSMutableArray *activeMines = [[NSMutableArray alloc]init];
     for (MinesweeperTile *tile in self.tiles){
-        if ((tile.disabled == NO) && ([tile.mine isEqual: @"X"])){
-            for (int i = 0; i < (arc4random() % 4); i++){
-                tile.disabled = YES;
-            }
+        if ((tile.disabled == NO) && ([tile.mine isEqual:@"X"])){
+            [activeMines addObject:tile];
         }
     }
-}
+    
+    if ([activeMines count] >= 1){
+        MinesweeperTile *randomCheatTile = [activeMines objectAtIndex:(arc4random() % [activeMines count])];
+        randomCheatTile.disabled = YES;
+    }
+    else {
+        [self disableBoard];
+    }
 
+}
 
 
 - (Tile *)tileAtIndex:(NSUInteger)index
@@ -113,7 +127,7 @@
 
 
 
-- (int)surroundingMines:(NSInteger)index {
+- (NSUInteger)surroundingMines:(NSInteger)index {
     int mineCount = 0;
     if (index % 8 != 0){
         MinesweeperTile *leftTile = [self tileAtIndex:(index - 1)];
@@ -171,6 +185,9 @@
     
     if (tileIndex % 8 != 0){
         MinesweeperTile *leftTile = self.tiles[tileIndex - 1];
+        // Returns number of surrounding mines in tile
+        
+        [self surroundingMines:(tileIndex - 1 )];
         leftTile.disabled = YES;
     }
     if ((tileIndex + 1) % 8 != 0){

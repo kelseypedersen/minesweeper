@@ -18,8 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (strong, nonatomic) Game *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *tileButtons;
-@property (strong, nonatomic)MinesweeperTileViewController *minesweepertilevc;
 @property (weak, nonatomic) IBOutlet UIButton *validateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *validateStatusLabel;
 
 - (IBAction)validateButton;
 - (IBAction)cheatButton;
@@ -29,7 +29,6 @@
 
 
 @implementation ViewController
-
 
 - (Board *)createBoard
 {
@@ -47,24 +46,25 @@
 {
     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
     [self.game chooseTileAtIndex:tileIndex];
-    
-    [self setTileFormatting:sender];
-    
+    [self setTileFormatting:tileIndex];
     [self updateUI];
 }
 
-- (void)setTileFormatting:(UIButton *)sender{
-     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
-    int surroundingMines = [self.game surroundingMines:tileIndex];
-    [sender setTitle:[NSString stringWithFormat:@"%d", surroundingMines] forState:UIControlStateNormal];
+- (void)setTileFormatting:(NSUInteger)tileIndex{
+    NSUInteger surroundingMines = [self.game surroundingMines:tileIndex];
+    UIButton *formattedBotton = [self.tileButtons objectAtIndex:tileIndex];
+    
+    [formattedBotton setTitle:[NSString stringWithFormat:@"%d", surroundingMines] forState:UIControlStateNormal];
+    formattedBotton.titleLabel.font = [UIFont fontWithName:@"Hiragino Mincho ProN" size:15.0f];
+    
     if (surroundingMines == 1) {
-        [sender setTintColor:[UIColor blueColor]];
+        [formattedBotton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     } else if (surroundingMines == 2){
-        [sender setTintColor:[UIColor greenColor]];
+        [formattedBotton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     } else if (surroundingMines == 3){
-        [sender setTintColor:[UIColor redColor]];
+        [formattedBotton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     } else {
-        [sender setTintColor:[UIColor blackColor]];
+        [formattedBotton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
 }
 
@@ -94,14 +94,18 @@
         [tileButton setTitle:@"" forState:UIControlStateNormal];
         [tileButton setBackgroundColor:[UIColor lightGrayColor]];
     }
+    
+    self.validateStatusLabel.text = @" ";
 
     [self updateUI];
 }
 
 
-
 - (IBAction)validateButton {
-    [self.game validateTiles];
+    if ([[self.game validateTiles] isEqual: @"X"]){
+        NSLog(@"got to the label");
+        self.validateStatusLabel.text = @"All tiles correct so far";
+    }
 }
 
 
@@ -123,7 +127,6 @@
             [tileButton setBackgroundColor:[UIColor grayColor]];
         }
         tileButton.enabled = !tile.disabled;
-    
     }
 }
 

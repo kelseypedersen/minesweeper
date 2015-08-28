@@ -141,6 +141,7 @@
                                         <rect key="frame" x="123" y="150" width="36" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.65799741369999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -733,16 +734,6 @@
                                             <action selector="cheatButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GiS-Q2-6ta"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NHA-nK-CvN">
-                                        <rect key="frame" x="137" y="57" width="46" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="thumbtack_icon_circle">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="validateButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="O6m-l7-mYH"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ovq-Wl-E2T">
                                         <rect key="frame" x="255" y="63" width="56" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -756,6 +747,23 @@
                                             <action selector="restartGameAlert" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6WH-Vy-RKP"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DI0-qk-nmk">
+                                        <rect key="frame" x="9" y="423" width="302" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="22"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NHA-nK-CvN">
+                                        <rect key="frame" x="137" y="475" width="46" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="thumbtack_icon_circle">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="validateButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="O6m-l7-mYH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89599116160000003" green="0.89599116160000003" blue="0.89599116160000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -765,6 +773,7 @@
                     <connections>
                         <outlet property="gameView" destination="db6-Ij-tf5" id="9rh-YT-bQW"/>
                         <outlet property="validateLabel" destination="NHA-nK-CvN" id="IQC-6m-4SX"/>
+                        <outlet property="validateStatusLabel" destination="DI0-qk-nmk" id="kHN-ye-Khl"/>
                         <outletCollection property="tileButtons" destination="0xd-td-UZQ" id="2lh-qq-2uV"/>
                         <outletCollection property="tileButtons" destination="zhm-uh-REY" id="LpE-6Z-63Q"/>
                         <outletCollection property="tileButtons" destination="0CH-86-AsC" id="Vim-Gf-GaB"/>

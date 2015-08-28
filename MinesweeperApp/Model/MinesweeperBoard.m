@@ -13,6 +13,8 @@ const int COUNT = 64;
 
 @implementation MinesweeperBoard
 
+// This is creating a board with all possible outcomes, in our case its one X and one O
+
 -(instancetype)init{
     
     // Testing to see if you can initialize the superclass.
@@ -21,16 +23,16 @@ const int COUNT = 64;
     
     self = [super init];
     if (self){
-
-        for (NSString *mine in [MinesweeperTile totalGamePieces]){
-            
+      for (NSString *mine in [MinesweeperTile totalGamePieces]){
             MinesweeperTile *tile = [[MinesweeperTile alloc]init];
-            tile.mine = mine;
-            // Inheriting method from Board
+                tile.mine = mine;
+                NSLog(@"TILE IN BOARD: %@", tile);
+                NSLog(@"TILE IN BOARD WITH MINE: %@", tile.mine);
             [self addTile:tile];
         }
     }
-    NSLog(@"minesweeper board: %@", self);
+
+    // Returning MinesweeperTile objects woohoo! <MinesweeperTile 0x7a34u53>
     return self;
 }
 

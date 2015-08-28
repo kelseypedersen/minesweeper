@@ -10,15 +10,14 @@
 
 @implementation Tile
 
-@synthesize selected = _selected;
+@synthesize disabled = _disabled;
 
-- (BOOL)selected {
-    return _selected;
+- (BOOL)disabled {
+    return _disabled;
 }
 
-- (void)setSelected:(BOOL)selected {
-    _selected = selected;
+- (void)setDisabled:(BOOL)disabled {
+    _disabled = disabled;
 }
-
 
 @end

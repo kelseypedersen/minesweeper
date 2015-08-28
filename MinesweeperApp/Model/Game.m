@@ -8,6 +8,7 @@
 
 #import "Game.h"
 #import "Board.h"
+#import "MinesweeperTile.h"
 
 @interface Game ()
 @property (strong, nonatomic) NSMutableArray *tiles;
@@ -24,7 +25,6 @@
     if (!_tiles) _tiles = [[NSMutableArray alloc]init];
     return _tiles;
 }
-
 
 
 #pragma mark Counting Mines
@@ -56,46 +56,64 @@
     int mineCount = 0;
     // LEFT: for all spaces on the board except the left column, where the index is divisible by 8
     if (index % 8 != 0){
-        if ([self.tiles[index - 1] isEqualToString:@"X"]){
+        MinesweeperTile *leftTile = [self tileAtIndex:(index - 1)];
+        if ([leftTile.mine isEqualToString: @"X"]){
             mineCount += 1;
         }
     } // RIGHT: for all spaces on the board except the right column, where the index plus one is divisible by 8
+
     if ((index + 1) % 8 != 0){
-        if ([self.tiles[index + 1] isEqualToString: @"X"]){
+        MinesweeperTile *rightTile = [self tileAtIndex:(index + 1)];
+        if ([rightTile.mine isEqualToString:@"X"]){
             mineCount += 1;
         }
     } // TOP: for all spaces on the board except the top row, where there are not rows above
+    
     if (index >= 8){
-        if ([self.tiles[index - 8] isEqualToString:@"X"]){
+        MinesweeperTile *topTile = [self tileAtIndex:(index - 8)];
+        if ([topTile.mine isEqualToString:@"X"]){
             mineCount += 1;
         }
     } // BOTTOM: for all spaces on the board except the bottom row, where there are not rows below
     if (index <= 55){
-        if ([self.tiles[index + 8] isEqualToString: @"X"]){
+        MinesweeperTile *bottomTile = [self tileAtIndex:(index + 8)];
+        if ([bottomTile.mine isEqualToString:@"X"]){
             mineCount += 1;
         }
     } // TOP LEFT: for all spaces on the board except the top row and the left row
     if ((index >= 9) && (index % 8 != 0)){
-        if ([self.tiles[index - 9] isEqualToString:@"X"]){
+        MinesweeperTile *topLeft = [self tileAtIndex:(index - 9)];
+        if ([topLeft.mine isEqualToString:@"X"]){
             mineCount += 1;
         }
     } // TOP RIGHT: for all spaces on the board except the top row and the right now
     if ((index >= 8) && ((index + 1) % 8 != 0)){
-        if ([self.tiles[index - 7] isEqualToString:@"X"]){
+        MinesweeperTile *topRight = [self tileAtIndex:(index - 7)];
+        if ([topRight.mine isEqualToString:@"X"]){
             mineCount += 1;
         }
     } // BOTTOM LEFT:
     if ((index <= 55) && (index % 8 != 0)){
-        if ([self.tiles[index + 7] isEqualToString:@"X"]){
+        MinesweeperTile *bottomLeft = [self tileAtIndex:(index + 7)];
+        if ([bottomLeft.mine isEqualToString:@"X"]){
             mineCount += 1;
         }
     } // BOTTOM RIGHT -
     if ((index <= 53) && (index + 1) % 8 != 0){
-        if ([self.tiles[index + 9] isEqualToString:@"X"]){
+        MinesweeperTile *bottomRight = [self tileAtIndex:(index + 9)];
+        if ([bottomRight.mine isEqualToString:@"X"]){
             mineCount += 1;
         }
     }
     return mineCount;
+}
+
+- (void)disableTheMines:(NSInteger)index{
+
+    if (index % 8 != 0){
+        MinesweeperTile *leftTile = self.tiles[index - 1];
+//        leftTile.disabled = YES;
+    }
 }
 
 
@@ -107,6 +125,8 @@
 
 // Drawing from the drawRandomTile method in the board; Adding to new array of tiles; returning array of tile
 
+// 
+
 - (instancetype)initWithTileCount:(NSUInteger)count
                        usingBoard:(Board *)board {
     
@@ -115,8 +135,8 @@
     if (self){
         for (int i = 0; i < count; i++){
             Tile *tile = [board drawRandomTile];
-            NSLog(@"tile from the draw random tile: %@", tile);
-
+            // Draw random tile should be returning an object, not a string
+            NSLog(@"TILE %@", tile);
             if (tile){
                 [self.tiles addObject:tile];
             } else {
@@ -124,8 +144,6 @@
                 break;
             }
         }
-        NSLog(@"game.m - returning self.tiles: %@", self);
-        
     }
     return self;
 }

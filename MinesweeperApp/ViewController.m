@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MinesweeperTileViewController.h"
 #import "Game.h"
 #import "Board.h"
 #import "Tile.h"
@@ -17,8 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (strong, nonatomic) Game *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *tileButtons;
+@property (strong, nonatomic)MinesweeperTileViewController *minesweepertilevc;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
-
 @property (weak, nonatomic) IBOutlet UIButton *validateLabel;
 
 
@@ -49,7 +50,7 @@
 # pragma mark Reset Game Button
 
 - (IBAction)restartGameAlert {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Retile, fo real?"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Are you sure?"
                                                     message:@"This will reset your game"
                                                    delegate:self
                                           cancelButtonTitle:@"Cancel"
@@ -72,9 +73,12 @@
                                     usingBoard:[self createBoard]];
     
     for (UIButton *tileButton in self.tileButtons){
-        [tileButton setTitle:@"" forState:UIControlStateNormal];
-        [tileButton setBackgroundColor:[UIColor greenColor]];
+        [tileButton setTitle:@"" forState:UIControlStateSelected];
+        [tileButton setBackgroundColor:[UIColor grayColor]];
     }
+      [self.validateLabel setBackgroundImage:[self newBoardValidateImageForGame] forState:UIControlStateNormal];
+    [self.minesweepertilevc createBoard];
+    
     //    [self updateUI];
 }
 
@@ -94,6 +98,12 @@
     }
 }
 
+
+# pragma mark Cheat Button
+
+
+
+
 - (IBAction)tilePressed:(UIButton *)sender
 {
     NSLog(@"tile pressed %@", sender);
@@ -107,7 +117,7 @@
     
     // Clicked on a tile with no mines surrounding --> Disable surrounding mines
     else if ([self.game surroundingMines:tileIndex] == 0){
-        [self disableMines:sender];
+        [self.game disableTheMines:tileIndex];
         [sender setBackgroundColor:[UIColor grayColor]];
         
     // Clicked on a tile with mines surrounding it --> Show # of mines surrounding
@@ -115,9 +125,22 @@
         [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
         [sender setBackgroundColor:[UIColor grayColor]];
     }
+    
+//    [NSTimer scheduledTimerWithTimeInterval:12.0f target:self selector:@selector(timerLabel:) userInfo:nil repeats:NO];
+//    
+//    NSTimer *time = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timerLabel:) userInfo:nil repeats:NO];
+//    NSInteger countdown = [time fireDate];
+    
+    
 //    [self updateUI];
 
 }
+
+//- (void)timerLabel:(NSTimer *)timer {
+//    NSLog(@"%%%%%%%%%%%%%%%%time label is being fired");
+//    NSLog(@"TIMER OBJECT %@", timer);
+//    self.timerLabel.text = [NSString stringWithFormat:@"%@", countdown];
+//}
 
 
 // ** Originally had in the game model, but needed to access the sender button to be able to disable the surrounding buttons.
@@ -180,6 +203,9 @@
     }
 }
 
+
+// Ends the game
+
 - (void)disableBoard:(UIButton *)tile{
     [tile setTitle:[NSString stringWithFormat:@"X"] forState:UIControlStateNormal];
     for (UIButton *tileButton in self.tileButtons){
@@ -204,16 +230,22 @@
     return [UIImage imageNamed:@"smiley-face-dead"];
 }
 
+- (UIImage *)newBoardValidateImageForGame {
+    return [UIImage imageNamed:@"smiley-face-with-mustache"];
+}
+
+
+// Run every move to update the board
 
 - (void)updateUI
 {
     for (UIButton *tileButton in self.tileButtons){
         NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
-        Tile *tile = [self.game tileAtIndex:tileIndex];
-        if (tile.isChosen){
+        MinesweeperTile *tile = [self.game tileAtIndex:tileIndex];
+//        if (tile.disabled){
             [tileButton setBackgroundColor:[self backgroundColorForTile:tile]];
-//        tileButton.enabled = !tile.isMatched;
-        }
+//        }
+//        tileButton.enabled = !tile.disabled;
     }
 }
 

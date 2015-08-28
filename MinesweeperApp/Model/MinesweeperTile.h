@@ -15,10 +15,12 @@
 // Add additional properties not in tile, specific to a minesweeper game
 
 // Contains a single character representing mine - if nil, it hasn't been set yet
-@property (nonatomic) BOOL mine;
+@property (strong, nonatomic) NSString *mine;
+
 
 + (NSMutableArray *)totalGamePieces;
-+ (NSArray *)validSymbols;
+
++ (NSArray *)gameSymbols;
 
 
 @end

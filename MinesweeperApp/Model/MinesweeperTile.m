@@ -19,37 +19,40 @@
 @implementation MinesweeperTile
 
 
+// Creating the mine getter and setter properties
 @synthesize mine = _mine;
 
-+ (NSArray *)validSymbols
+
+// Mine returns a true or false
+- (void)setMine:(NSString *)mine
 {
-    return @[@"X", @"O"];
+    _mine = mine;
 }
 
 
-- (void)setMine:(BOOL)mine
-{
-        _mine = mine;
-}
-
-
-- (BOOL)mine
+- (NSString *)mine
 {
     return _mine;
 }
 
 
-
-
+// Not sure if I need these totalGamePieces now
 
 + (NSArray *)totalGamePieces {
     return @[@"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O"];
 }
 
 
++ (NSArray *)gameSymbols
+{
+    return @[@"X", @"O"];
+}
 
-
-
+// This should return either a X or O
+- (NSString *)contents
+{
+    return [NSString stringWithFormat:@"%@", self.mine];
+}
 
 
 

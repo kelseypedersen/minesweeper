@@ -19,9 +19,9 @@
 
 - (int)surroundingMines:(NSInteger)index;
 - (int)countSurroundingMines:(NSMutableArray *)tiles;
-//- (void)inactivateAllSurroundingMines:(NSUInteger)index;
 
 - (void)shouldDisableGame;
+- (void)disableTheMines:(NSInteger)index;
 
 
 

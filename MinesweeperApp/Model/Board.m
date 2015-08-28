@@ -30,10 +30,12 @@
     return _tiles;
 }
 
-- (NSMutableArray *)totalTiles {
-    if (!_totalTiles) _totalTiles = [[NSMutableArray alloc]initWithArray:[MinesweeperTile totalGamePieces]];
-    return _totalTiles;
-}
+//- (NSMutableArray *)totalTiles {
+//    if (!_totalTiles) _totalTiles = [[NSMutableArray alloc]initWithArray:[MinesweeperTile totalGamePieces]];
+//    return _totalTiles;
+//}
+
+
 
 // Drawing random tile from the main tiles array with 10 mines and pushing in the tiles array
 // Mines are set in the initial cards array, not here
@@ -43,12 +45,14 @@
     
     Tile *randomTile = nil;
     
-    if ([self.totalTiles count]) {
-        unsigned index = arc4random() % [self.totalTiles count];
-        randomTile = self.totalTiles[index];
-        [self.totalTiles removeObjectAtIndex:index];
+    if ([self.tiles count]) {
+        unsigned index = arc4random() % [self.tiles count];
+        // Total tiles needs to be an array of objects with contents of X and O's, not just X & O's
+        // So when randomly drawing, we are drawing objects in the array
+        randomTile = self.tiles[index];
+        [self.tiles removeObjectAtIndex:index];
     }
-    NSLog(@"RANDOM TILE: %@", randomTile);
+    NSLog(@"tiles array %@", self.tiles);
     return randomTile;
 }
 

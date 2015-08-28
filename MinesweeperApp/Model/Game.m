@@ -34,12 +34,12 @@
 
 - (BOOL)chooseTileAtIndex:(NSUInteger)index
 {
-    Tile *tile = [self tileAtIndex:index];
+    MinesweeperTile *tile = [self tileAtIndex:index];
     
-    if ([tile isEqual: @"X"]){
+    if ([tile.mine isEqual: @"X"]){
         return YES;
 
-//        [self shouldDisableGame];
+//       [self shouldDisableGame];
         
         // deactivate game
         // show all @"X"s
@@ -54,68 +54,112 @@
 
 - (int)surroundingMines:(NSInteger)index {
     int mineCount = 0;
-    // LEFT: for all spaces on the board except the left column, where the index is divisible by 8
     if (index % 8 != 0){
         MinesweeperTile *leftTile = [self tileAtIndex:(index - 1)];
         if ([leftTile.mine isEqualToString: @"X"]){
             mineCount += 1;
+            NSLog(@"left");
         }
-    } // RIGHT: for all spaces on the board except the right column, where the index plus one is divisible by 8
-
+    }
     if ((index + 1) % 8 != 0){
         MinesweeperTile *rightTile = [self tileAtIndex:(index + 1)];
         if ([rightTile.mine isEqualToString:@"X"]){
             mineCount += 1;
+            NSLog(@"right");
         }
-    } // TOP: for all spaces on the board except the top row, where there are not rows above
-    
+    }
     if (index >= 8){
         MinesweeperTile *topTile = [self tileAtIndex:(index - 8)];
         if ([topTile.mine isEqualToString:@"X"]){
             mineCount += 1;
+            NSLog(@"top");
         }
-    } // BOTTOM: for all spaces on the board except the bottom row, where there are not rows below
+    }
     if (index <= 55){
         MinesweeperTile *bottomTile = [self tileAtIndex:(index + 8)];
         if ([bottomTile.mine isEqualToString:@"X"]){
             mineCount += 1;
+            NSLog(@"bottom");
         }
-    } // TOP LEFT: for all spaces on the board except the top row and the left row
+    }
     if ((index >= 9) && (index % 8 != 0)){
         MinesweeperTile *topLeft = [self tileAtIndex:(index - 9)];
         if ([topLeft.mine isEqualToString:@"X"]){
             mineCount += 1;
+            NSLog(@"top left");
         }
-    } // TOP RIGHT: for all spaces on the board except the top row and the right now
+    }
     if ((index >= 8) && ((index + 1) % 8 != 0)){
         MinesweeperTile *topRight = [self tileAtIndex:(index - 7)];
         if ([topRight.mine isEqualToString:@"X"]){
             mineCount += 1;
+            NSLog(@"top right");
         }
-    } // BOTTOM LEFT:
+    }
     if ((index <= 55) && (index % 8 != 0)){
         MinesweeperTile *bottomLeft = [self tileAtIndex:(index + 7)];
         if ([bottomLeft.mine isEqualToString:@"X"]){
             mineCount += 1;
+            NSLog(@"bottom left");
         }
-    } // BOTTOM RIGHT -
+    }
     if ((index <= 53) && (index + 1) % 8 != 0){
         MinesweeperTile *bottomRight = [self tileAtIndex:(index + 9)];
         if ([bottomRight.mine isEqualToString:@"X"]){
             mineCount += 1;
+            NSLog(@"bottom right");
         }
     }
     return mineCount;
 }
 
-- (void)disableTheMines:(NSInteger)index{
 
-    if (index % 8 != 0){
-        MinesweeperTile *leftTile = self.tiles[index - 1];
-//        leftTile.disabled = YES;
+- (void)disableSurroundingMines:(NSInteger)tileIndex{
+    
+    if (tileIndex % 8 != 0){
+        MinesweeperTile *leftTile = self.tiles[tileIndex - 1];
+        leftTile.disabled = YES;
+    }
+    if ((tileIndex + 1) % 8 != 0){
+        MinesweeperTile *rightTile = self.tiles[tileIndex + 1];
+        rightTile.disabled = YES;
+    }
+    if (tileIndex >= 8){
+        MinesweeperTile *topTile = self.tiles[tileIndex - 8];
+        topTile.disabled = YES;
+    }
+    if (tileIndex <= 55){
+        MinesweeperTile *bottomTile = self.tiles[tileIndex + 8];
+        bottomTile.disabled = YES;
+    }
+    if ((tileIndex >= 9) && (tileIndex % 8 != 0)){
+        MinesweeperTile *topLeftTile = self.tiles[tileIndex - 9];
+        topLeftTile.disabled = YES;
+    }
+    if ((tileIndex >= 8) && (tileIndex + 1) % 8 != 0){
+        MinesweeperTile *topRightTile = self.tiles[tileIndex - 7];
+        topRightTile.disabled = YES;
+    }
+    if ((tileIndex <= 55) && (tileIndex % 8 != 0)){
+        MinesweeperTile *bottomLeftTile = self.tiles[tileIndex + 7];
+        bottomLeftTile.disabled = YES;
+    }
+    if ((tileIndex <= 53) && (tileIndex + 1) % 8 != 0){
+        MinesweeperTile *bottomRightTile = self.tiles[tileIndex + 9];
+        bottomRightTile.disabled = YES;
     }
 }
 
+
+
+- (void)disableBoard:(Tile *)tile{
+    for (Tile *tile in self.tiles){
+        if (tile.disabled == NO){
+            tile.disabled = YES;
+            NSLog(@"disabled board!!!");
+        }
+    }
+}
 
 
 - (Tile *)tileAtIndex:(NSUInteger)index
@@ -124,8 +168,6 @@
 }
 
 // Drawing from the drawRandomTile method in the board; Adding to new array of tiles; returning array of tile
-
-// 
 
 - (instancetype)initWithTileCount:(NSUInteger)count
                        usingBoard:(Board *)board {

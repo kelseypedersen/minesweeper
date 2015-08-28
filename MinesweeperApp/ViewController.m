@@ -106,23 +106,22 @@
 
 - (IBAction)tilePressed:(UIButton *)sender
 {
-    NSLog(@"tile pressed %@", sender);
-    
     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
     
-    // Clicked on a mine --> End game
+    // Outcome #1: Clicked on a mine >> End game
     if ([self.game chooseTileAtIndex:tileIndex] == YES){
         [self disableBoard:sender];
     }
     
-    // Clicked on a tile with no mines surrounding --> Disable surrounding mines
+    // Outcome #2: Clicked on a tile w/ no surrounding mines >> Disable surrounding mines
     else if ([self.game surroundingMines:tileIndex] == 0){
-        [self.game disableTheMines:tileIndex];
+        [self.game disableSurroundingMines:tileIndex];
         [sender setBackgroundColor:[UIColor grayColor]];
         
-    // Clicked on a tile with mines surrounding it --> Show # of mines surrounding
-    }else {
+    // Outcome #3: Clicked on a tile w/ surrounding mines >> Show # of mines surrounding on tile
+    } else {
         [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
+        NSLog(@"# surrounding mines: %d", [self.game surroundingMines:tileIndex]);
         [sender setBackgroundColor:[UIColor grayColor]];
     }
     
@@ -132,7 +131,7 @@
 //    NSInteger countdown = [time fireDate];
     
     
-//    [self updateUI];
+    [self updateUI];
 
 }
 
@@ -143,65 +142,6 @@
 //}
 
 
-// ** Originally had in the game model, but needed to access the sender button to be able to disable the surrounding buttons.
-// Should change to be in the game model, and change the tile property to matched
-// Then will update within the update UI method
-
-- (void)disableMines:(UIButton *)tile{
-    
-    NSUInteger tileIndex = [self.tileButtons indexOfObject:tile];
-    
-    if (tileIndex % 8 != 0){ 
-        UIButton *leftTile = self.tileButtons[tileIndex - 1];
-        leftTile.enabled = NO;
-        [leftTile setTitle:@"" forState:UIControlStateNormal];
-        [leftTile setBackgroundColor:[UIColor grayColor]];
-    }
-    if ((tileIndex + 1) % 8 != 0){
-        UIButton *rightTile = self.tileButtons[tileIndex + 1];
-        rightTile.enabled = NO;
-        [rightTile setTitle:@"" forState:UIControlStateNormal];
-        [rightTile setBackgroundColor:[UIColor grayColor]];
-    }
-    if (tileIndex >= 8){
-        UIButton *topTile = self.tileButtons[tileIndex - 8];
-        topTile.enabled = NO;
-        [topTile setTitle:@"" forState:UIControlStateNormal];
-        [topTile setBackgroundColor:[UIColor grayColor]];
-    }
-    if (tileIndex <= 55){
-        UIButton *bottomTile = self.tileButtons[tileIndex + 8];
-        bottomTile.enabled = NO;
-        [bottomTile setTitle:@"" forState:UIControlStateNormal];
-        [bottomTile setBackgroundColor:[UIColor grayColor]];
-    }
-    if ((tileIndex >= 9) && (tileIndex % 8 != 0)){
-        UIButton *topLeftTile = self.tileButtons[tileIndex - 9];
-        topLeftTile.enabled = NO;
-        [topLeftTile setTitle:@"" forState:UIControlStateNormal];
-        [topLeftTile setBackgroundColor:[UIColor grayColor]];
-
-    }
-    if ((tileIndex >= 8) && (tileIndex + 1) % 8 != 0){
-        UIButton *topRightTile = self.tileButtons[tileIndex - 7];
-        topRightTile.enabled = NO;
-        [topRightTile setTitle:@"" forState:UIControlStateNormal];
-        [topRightTile setBackgroundColor:[UIColor grayColor]];
-    }
-    
-    if ((tileIndex <= 55) && (tileIndex % 8 != 0)){
-        UIButton *bottomLeftTile = self.tileButtons[tileIndex + 7];
-        bottomLeftTile.enabled = NO;
-        [bottomLeftTile setTitle:@"" forState:UIControlStateNormal];
-        [bottomLeftTile setBackgroundColor:[UIColor grayColor]];
-    }
-    if ((tileIndex <= 53) && (tileIndex + 1) % 8 != 0){
-        UIButton *bottomRightTile = self.tileButtons[tileIndex + 9];
-        bottomRightTile.enabled = NO;
-        [bottomRightTile setTitle:@"" forState:UIControlStateNormal];
-        [bottomRightTile setBackgroundColor:[UIColor grayColor]];
-    }
-}
 
 
 // Ends the game
@@ -242,10 +182,11 @@
     for (UIButton *tileButton in self.tileButtons){
         NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
         MinesweeperTile *tile = [self.game tileAtIndex:tileIndex];
-//        if (tile.disabled){
-            [tileButton setBackgroundColor:[self backgroundColorForTile:tile]];
-//        }
-//        tileButton.enabled = !tile.disabled;
+        if (tile.disabled){
+            [tileButton setBackgroundColor:[UIColor yellowColor]];
+            NSLog(@"disabled button worked!");
+        }
+        tileButton.enabled = !tile.disabled;
     }
 }
 

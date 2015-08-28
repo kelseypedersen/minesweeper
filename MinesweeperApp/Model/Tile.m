@@ -12,12 +12,4 @@
 
 @synthesize disabled = _disabled;
 
-- (BOOL)disabled {
-    return _disabled;
-}
-
-- (void)setDisabled:(BOOL)disabled {
-    _disabled = disabled;
-}
-
 @end

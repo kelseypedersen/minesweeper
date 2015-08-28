@@ -13,7 +13,6 @@
 @interface Board ()
 
 @property (strong, nonatomic) NSMutableArray *tiles;
-@property (strong, nonatomic) NSMutableArray *totalTiles;
 
 @end
 

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MinesweeperApp/Model/Game.m"
-            timestampString = "462493677.463936"
+            timestampString = "462494361.790532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-chooseTileAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MinesweeperApp/Model/Game.m"
-            timestampString = "462493677.463936"
+            timestampString = "462494361.790532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-disableSurroundingMines:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MinesweeperApp/Model/Game.m"
-            timestampString = "462493677.463936"
+            timestampString = "462494361.790532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-disableSurroundingMines:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MinesweeperApp/ViewController.m"
-            timestampString = "462480582.350343"
+            timestampString = "462494715.563914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-setTileFormatting:"
             landmarkType = "5">
          </BreakpointContent>

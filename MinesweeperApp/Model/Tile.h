@@ -11,11 +11,7 @@
 @interface Tile : NSObject
 
 
-@property (strong, nonatomic) NSArray *mineSymbols;
-
 @property (nonatomic) BOOL disabled;
 
-
-- (int)countSurroundingMines:(NSMutableArray *)tiles;
 
 @end

@@ -9,8 +9,6 @@
 #import "MinesweeperBoard.h"
 #import "MinesweeperTile.h"
 
-const int COUNT = 64;
-
 @implementation MinesweeperBoard
 
 // This is creating a board with all possible outcomes, in our case its one X and one O
@@ -29,8 +27,6 @@ const int COUNT = 64;
             [self addTile:tile];
         }
     }
-
-    // Returning MinesweeperTile objects woohoo! <MinesweeperTile 0x7a34u53>
     return self;
 }
 

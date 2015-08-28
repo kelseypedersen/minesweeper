@@ -11,6 +11,4 @@
 @interface MinesweeperBoard : Board
 
 
-
-
 @end

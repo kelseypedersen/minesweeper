@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (strong, nonatomic) Game *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *tileButtons;
-@property (weak, nonatomic) IBOutlet UIButton *validateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *validateStatusLabel;
 
 - (IBAction)validateButton;
@@ -102,10 +101,17 @@
 
 
 - (IBAction)validateButton {
-    if ([[self.game validateTiles] isEqual:@"Not valid"]){
-        self.validateStatusLabel.text = @"One or many tiles are incorrect";
-    } else {
-        self.validateStatusLabel.text = @"All tiles are correct so far 👍";
+    
+    for (UIButton *tile in self.tileButtons){
+        if (tile.enabled){
+            if ([[self.game validateTiles] isEqual:@"Not valid"]){
+                self.validateStatusLabel.text = @"One or many tiles are incorrect";
+            } else {
+                self.validateStatusLabel.text = @"All tiles are correct so far 👍";
+            }
+        } else {
+            self.validateStatusLabel.text = @"Start new game to validate";
+        }
     }
 }
 

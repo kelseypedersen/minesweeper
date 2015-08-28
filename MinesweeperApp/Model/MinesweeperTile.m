@@ -20,21 +20,13 @@
 
 @synthesize mine = _mine;
 
+// If we want to change the board size, we would create this dynamically, by counting the number of mines being adding to the tiles array, and adding in the final objects based off of the mine/non-mine count. For the sake of this challenge, I think this works well since no changes to the board size or mine count are being made.
+
 + (NSArray *)totalGamePieces {
     return @[@"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O"];
 }
 
 
-//+ (NSArray *)gameSymbols
-//{
-//    return @[@"X", @"O"];
-//}
-//
-//// This should return either a X or O
-//- (NSString *)contents
-//{
-//    return [NSString stringWithFormat:@"%@", self.mine];
-//}
 
 
 @end

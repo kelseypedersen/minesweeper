@@ -772,7 +772,6 @@
                     </view>
                     <connections>
                         <outlet property="gameView" destination="db6-Ij-tf5" id="9rh-YT-bQW"/>
-                        <outlet property="validateLabel" destination="NHA-nK-CvN" id="IQC-6m-4SX"/>
                         <outlet property="validateStatusLabel" destination="DI0-qk-nmk" id="kHN-ye-Khl"/>
                         <outletCollection property="tileButtons" destination="0xd-td-UZQ" id="2lh-qq-2uV"/>
                         <outletCollection property="tileButtons" destination="zhm-uh-REY" id="LpE-6Z-63Q"/>

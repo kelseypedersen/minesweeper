@@ -102,9 +102,10 @@
 
 
 - (IBAction)validateButton {
-    if ([[self.game validateTiles] isEqual: @"X"]){
-        NSLog(@"got to the label");
-        self.validateStatusLabel.text = @"All tiles correct so far";
+    if ([[self.game validateTiles] isEqual:@"Not valid"]){
+        self.validateStatusLabel.text = @"One or many tiles are incorrect";
+    } else {
+        self.validateStatusLabel.text = @"All tiles are correct so far 👍";
     }
 }
 

@@ -18,13 +18,11 @@
 - (Tile *)tileAtIndex:(NSUInteger)index;
 
 - (NSUInteger)surroundingMines:(NSInteger)index;
-- (int)countSurroundingMines:(NSMutableArray *)tiles;
 
 - (void)shouldDisableGame;
 - (void)disableSurroundingMines:(NSInteger)index;
 
 - (NSString *)validateTiles;
-- (NSInteger)currentMines;
 - (void)cheat;
 
 @end

@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A80E6F1C1B90FC1900ECB49B /* ViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E6F1B1B90FC1900ECB49B /* ViewControllerTests.m */; };
+		A80E6F1E1B90FD6300ECB49B /* GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E6F1D1B90FD6300ECB49B /* GameTests.m */; };
 		A82FAF161B8265BF00C106D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF151B8265BF00C106D9 /* main.m */; };
 		A82FAF191B8265BF00C106D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF181B8265BF00C106D9 /* AppDelegate.m */; };
 		A82FAF1C1B8265BF00C106D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF1B1B8265BF00C106D9 /* ViewController.m */; };
 		A82FAF1F1B8265BF00C106D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82FAF1D1B8265BF00C106D9 /* Main.storyboard */; };
 		A82FAF211B8265BF00C106D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A82FAF201B8265BF00C106D9 /* Images.xcassets */; };
 		A82FAF241B8265BF00C106D9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82FAF221B8265BF00C106D9 /* LaunchScreen.xib */; };
-		A82FAF301B8265BF00C106D9 /* MinesweeperAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF2F1B8265BF00C106D9 /* MinesweeperAppTests.m */; };
 		A82FAF3B1B8265E200C106D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF3A1B8265E200C106D9 /* Tile.m */; };
 		A82FAF3F1B8265F800C106D9 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF3E1B8265F800C106D9 /* Board.m */; };
 		A82FAF421B82660100C106D9 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = A82FAF411B82660100C106D9 /* Game.m */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A80E6F1B1B90FC1900ECB49B /* ViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerTests.m; sourceTree = "<group>"; };
+		A80E6F1D1B90FD6300ECB49B /* GameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTests.m; sourceTree = "<group>"; };
 		A82FAF101B8265BF00C106D9 /* MinesweeperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinesweeperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82FAF141B8265BF00C106D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A82FAF151B8265BF00C106D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,7 +49,6 @@
 		A82FAF231B8265BF00C106D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A82FAF291B8265BF00C106D9 /* MinesweeperAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinesweeperAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82FAF2E1B8265BF00C106D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A82FAF2F1B8265BF00C106D9 /* MinesweeperAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinesweeperAppTests.m; sourceTree = "<group>"; };
 		A82FAF391B8265E200C106D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tile.h; path = Model/Tile.h; sourceTree = "<group>"; };
 		A82FAF3A1B8265E200C106D9 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tile.m; path = Model/Tile.m; sourceTree = "<group>"; };
 		A82FAF3D1B8265F800C106D9 /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Board.h; path = Model/Board.h; sourceTree = "<group>"; };
@@ -130,7 +132,8 @@
 		A82FAF2C1B8265BF00C106D9 /* MinesweeperAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				A82FAF2F1B8265BF00C106D9 /* MinesweeperAppTests.m */,
+				A80E6F1B1B90FC1900ECB49B /* ViewControllerTests.m */,
+				A80E6F1D1B90FD6300ECB49B /* GameTests.m */,
 				A82FAF2D1B8265BF00C106D9 /* Supporting Files */,
 			);
 			path = MinesweeperAppTests;
@@ -287,7 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A82FAF301B8265BF00C106D9 /* MinesweeperAppTests.m in Sources */,
+				A80E6F1C1B90FC1900ECB49B /* ViewControllerTests.m in Sources */,
+				A80E6F1E1B90FD6300ECB49B /* GameTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

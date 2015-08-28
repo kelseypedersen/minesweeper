@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *tiles;
 @property (strong, nonatomic) NSMutableArray *activeMines;
 @property (nonatomic) NSInteger *tileCheatCount;
+@property (strong, nonatomic) NSString *validateStatus;
 
 @end
 
@@ -43,6 +44,7 @@
             Tile *tile = [board drawRandomTile];
             if (tile){
                 [self.tiles addObject:tile];
+
             } else {
                 self = nil;
                 break;
@@ -59,17 +61,21 @@
 }
 
 
-- (NSString *)validateTiles{
-    NSString *valid = @"NO";
+
+- (NSString *)validateTiles {
     for (MinesweeperTile *tile in self.tiles){
-        if ((tile.disabled != NO) && ([tile.mine isEqual: @"X"])){
-            valid = @"YES";
-        } else {
-            [self disableBoard];
+        NSString *validateStatus = @"unknown";
+        if ([tile.mine isEqual: @"X"] && (tile.disabled == 0)){
+            validateStatus = @"valid";
+        } else if ([tile.mine isEqual:@"X"] && (tile.disabled == 1)){
+            validateStatus = @"Not valid";
         }
     }
-    return valid;
+    return self.validateStatus;
 }
+
+
+
 
 - (void)cheat{
     NSMutableArray *activeMines = [[NSMutableArray alloc]init];

@@ -35,6 +35,7 @@
 - (void)chooseTileAtIndex:(NSUInteger)index
 {
     MinesweeperTile *tile = [self tileAtIndex:index];
+    tile.disabled = YES;
     
     // Outcome #1: Clicked on a mine >> End game
     if ([tile.mine isEqual: @"X"]){
@@ -157,6 +158,7 @@
 - (void)validateTiles{
     for (MinesweeperTile *tile in self.tiles){
         if ((tile.disabled != NO) && ([tile.mine isEqual: @"X"])){
+            NSLog(@"correct tiles so far!");
         } else {
             [self disableBoard];
         }

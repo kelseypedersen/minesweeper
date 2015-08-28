@@ -19,7 +19,6 @@
 @property (strong, nonatomic) Game *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *tileButtons;
 @property (strong, nonatomic)MinesweeperTileViewController *minesweepertilevc;
-@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (weak, nonatomic) IBOutlet UIButton *validateLabel;
 
 
@@ -50,8 +49,27 @@
 {
     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
     [self.game chooseTileAtIndex:tileIndex];
-    [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
+    
+    [self setTileFormatting:sender];
+    
     [self updateUI];
+}
+
+- (void)setTileFormatting:(UIButton *)sender{
+     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
+    int surroundingMines = [self.game surroundingMines:tileIndex];
+    [sender setTitle:[NSString stringWithFormat:@"%d", surroundingMines] forState:UIControlStateNormal];
+    if (surroundingMines == 1) {
+        [sender setTintColor:[UIColor blueColor]];
+    } else if (surroundingMines == 2){
+        [sender setTintColor:[UIColor greenColor]];
+    } else if (surroundingMines == 3){
+        [sender setTintColor:[UIColor redColor]];
+    } else {
+        [sender setTintColor:[UIColor blackColor]];
+    }
+    
+    NSLog(@"title label: %@", sender.titleLabel.textColor);
 }
 
 # pragma mark New Game
@@ -78,9 +96,9 @@
                                     usingBoard:[self createBoard]];
     for (UIButton *tileButton in self.tileButtons){
         [tileButton setTitle:@"" forState:UIControlStateNormal];
-        [tileButton setBackgroundColor:[UIColor grayColor]];
+        [tileButton setBackgroundColor:[UIColor lightGrayColor]];
     }
-    [self.validateLabel setBackgroundImage:[self newBoardValidateImageForGame] forState:UIControlStateNormal];
+
     [self updateUI];
 }
 
@@ -91,20 +109,12 @@
     [self.game validateTiles];
 }
 
-- (IBAction)cheatButton {
-    [self.game cheat];
-    [self updateUI];
-}
-
 
 # pragma mark Cheat
 
-- (UIImage *)disableBoardValidateImageForGame {
-    return [UIImage imageNamed:@"smiley-face-dead"];
-}
-
-- (UIImage *)newBoardValidateImageForGame {
-    return [UIImage imageNamed:@"smiley-face-with-mustache"];
+- (IBAction)cheatButton {
+    [self.game cheat];
+    [self updateUI];
 }
 
 
@@ -115,17 +125,16 @@
     for (UIButton *tileButton in self.tileButtons){
         NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
         MinesweeperTile *tile = [self.game tileAtIndex:tileIndex];
-        if (tile.disabled){
-            [tileButton setBackgroundColor:[UIColor blueColor]];
+        if ((tile.disabled) && [tile.mine isEqual: @"X"]){
+            [tileButton setBackgroundColor:[UIColor redColor]];
         }
+        else if (tile.disabled){
+            [tileButton setBackgroundColor:[UIColor grayColor]];
+        }
+        
         tileButton.enabled = !tile.disabled;
+    
     }
-}
-
-- (UIColor *)backgroundColorForTile:(Tile *)tile
-{
-    // Add additional logic for UIImage later -- see cardGame
-    return [UIColor greenColor];
 }
 
 

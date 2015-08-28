@@ -32,6 +32,7 @@
 
 @implementation ViewController
 
+
 - (Board *)createBoard
 {
     NSLog(@"view controller - create board method");
@@ -45,7 +46,15 @@
     return _game;
 }
 
-# pragma mark Reset Game Button
+- (IBAction)tilePressed:(UIButton *)sender
+{
+    NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
+    [self.game chooseTileAtIndex:tileIndex];
+    [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
+    [self updateUI];
+}
+
+# pragma mark New Game
 
 - (IBAction)restartGameAlert {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Are you sure?"
@@ -57,7 +66,6 @@
     [alert show];
 }
 
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
@@ -68,66 +76,34 @@
 - (void)newBoard{
     self.game = [[Game alloc]initWithTileCount:[self.tileButtons count]
                                     usingBoard:[self createBoard]];
-    
     for (UIButton *tileButton in self.tileButtons){
         [tileButton setTitle:@"" forState:UIControlStateNormal];
         [tileButton setBackgroundColor:[UIColor grayColor]];
     }
-    
     [self.validateLabel setBackgroundImage:[self newBoardValidateImageForGame] forState:UIControlStateNormal];
-//    [self.minesweepertilevc createBoard];
-    
     [self updateUI];
 }
 
 
-# pragma mark Tile Pressed
+# pragma mark Validate
 
 - (IBAction)validateButton {
-    // For all buttons on the board
-    for (UIButton *tileButton in self.tileButtons){
-        NSUInteger tileButtonIndex = [self.tileButtons indexOfObject:tileButton];
-        // And for all buttons still enabled
-        if (tileButton.enabled){
-            if (![[self.game tileAtIndex:tileButtonIndex] isEqual: @"X"]){
-//                [self disableBoard:tileButton];
-            }
-        }
-    }
-}
-
-
-# pragma mark Cheat Button
-
-
-
-
-- (IBAction)tilePressed:(UIButton *)sender
-{
-    NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
-    [self.game chooseTileAtIndex:tileIndex];
-    [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
-    [self updateUI];
-}
-
-
-//- (void)disableBoard:(UIButton *)tile{
-//    [tile setTitle:[NSString stringWithFormat:@"X"] forState:UIControlStateNormal];
+    
+    [self.game validateTiles];
+    
 //    for (UIButton *tileButton in self.tileButtons){
-//        if (tileButton.enabled == NO){
-//            
-//        } else {
-//            tileButton.enabled = NO;
+//        NSUInteger tileButtonIndex = [self.tileButtons indexOfObject:tileButton];
+//        // And for all buttons still enabled
+//        if (tileButton.enabled){
+//            if (![[self.game tileAtIndex:tileButtonIndex] isEqual: @"X"]){
+////                [self disableBoard:tileButton];
+//            }
 //        }
-//        NSLog(@"tile button: %@", tileButton);
-//        
-//        NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
-//        Tile *tile = [self.game tileAtIndex:tileIndex];
-//        [tileButton setTitle:[NSString stringWithFormat:@"%@", tile] forState:UIControlStateNormal];
-//        [tileButton setBackgroundColor:[UIColor grayColor]];
-//        [self.validateLabel setBackgroundImage:[self disableBoardValidateImageForGame] forState:UIControlStateNormal];
 //    }
-//}
+}
+
+
+# pragma mark Cheat
 
 - (UIImage *)disableBoardValidateImageForGame {
     return [UIImage imageNamed:@"smiley-face-dead"];
@@ -138,6 +114,7 @@
 }
 
 
+# pragma mark Update
 // Runs every move to update the board
 - (void)updateUI
 {

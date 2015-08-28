@@ -48,8 +48,7 @@
     
     // Outcome #3: Clicked on a tile w/ surrounding mines >> Show # of mines surrounding on tile
     else {
-
-        // need to figure out how to display on the tiles now
+        // Taken care of in the VC
     }
 }
 
@@ -158,10 +157,22 @@
     for (Tile *tile in self.tiles){
         if (tile.disabled == NO){
             tile.disabled = YES;
-            NSLog(@"disabled board!!!");
         }
     }
 }
+
+
+- (void)validateTiles{
+    for (MinesweeperTile *tile in self.tiles){
+        if ((tile.disabled != NO) && ([tile.mine isEqual: @"X"])){
+            NSLog(@"all correct!");
+        } else {
+            [self disableBoard];
+        }
+    }
+}
+
+
 
 
 - (Tile *)tileAtIndex:(NSUInteger)index

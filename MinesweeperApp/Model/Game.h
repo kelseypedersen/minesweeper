@@ -23,6 +23,7 @@
 - (void)shouldDisableGame;
 - (void)disableSurroundingMines:(NSInteger)index;
 
+- (void)validateTiles;
 
 
 @end

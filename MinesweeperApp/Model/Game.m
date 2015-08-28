@@ -37,17 +37,16 @@
     MinesweeperTile *tile = [self tileAtIndex:index];
     
     // Outcome #1: Clicked on a mine >> End game
-    
     if ([tile.mine isEqual: @"X"]){
         [self disableBoard];
     }
-    // Outcome #2: Clicked on a tile w/ no surrounding mines >> Disable surrounding mines
     
+    // Outcome #2: Clicked on a tile w/ no surrounding mines >> Disable surrounding mines
     else if ([self surroundingMines:index] == 0) {
         [self disableSurroundingMines:index];
     }
-    // Outcome #3: Clicked on a tile w/ surrounding mines >> Show # of mines surrounding on tile
     
+    // Outcome #3: Clicked on a tile w/ surrounding mines >> Show # of mines surrounding on tile
     else {
 
         // need to figure out how to display on the tiles now

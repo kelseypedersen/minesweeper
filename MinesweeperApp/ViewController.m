@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *validateLabel;
 
 
-//
 //- (IBAction)validateButton;
 
 - (IBAction)tilePressed:(UIButton *)sender;
@@ -46,7 +45,6 @@
     return _game;
 }
 
-
 # pragma mark Reset Game Button
 
 - (IBAction)restartGameAlert {
@@ -58,7 +56,6 @@
     
     [alert show];
 }
-
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -73,13 +70,14 @@
                                     usingBoard:[self createBoard]];
     
     for (UIButton *tileButton in self.tileButtons){
-        [tileButton setTitle:@"" forState:UIControlStateSelected];
+        [tileButton setTitle:@"" forState:UIControlStateNormal];
         [tileButton setBackgroundColor:[UIColor grayColor]];
     }
-      [self.validateLabel setBackgroundImage:[self newBoardValidateImageForGame] forState:UIControlStateNormal];
-    [self.minesweepertilevc createBoard];
     
-    //    [self updateUI];
+    [self.validateLabel setBackgroundImage:[self newBoardValidateImageForGame] forState:UIControlStateNormal];
+//    [self.minesweepertilevc createBoard];
+    
+    [self updateUI];
 }
 
 
@@ -107,30 +105,15 @@
 - (IBAction)tilePressed:(UIButton *)sender
 {
     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
-    
     [self.game chooseTileAtIndex:tileIndex];
-    
     [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
-    
     [self updateUI];
-
 }
 
-//- (void)timerLabel:(NSTimer *)timer {
-//    NSLog(@"%%%%%%%%%%%%%%%%time label is being fired");
-//    NSLog(@"TIMER OBJECT %@", timer);
-//    self.timerLabel.text = [NSString stringWithFormat:@"%@", countdown];
-//}
-
-
-
-
-// Ends the game
 
 - (void)disableBoard:(UIButton *)tile{
     [tile setTitle:[NSString stringWithFormat:@"X"] forState:UIControlStateNormal];
     for (UIButton *tileButton in self.tileButtons){
-        
         if (tileButton.enabled == NO){
             
         } else {
@@ -143,7 +126,6 @@
         [tileButton setTitle:[NSString stringWithFormat:@"%@", tile] forState:UIControlStateNormal];
         [tileButton setBackgroundColor:[UIColor grayColor]];
         [self.validateLabel setBackgroundImage:[self disableBoardValidateImageForGame] forState:UIControlStateNormal];
-        
     }
 }
          
@@ -156,16 +138,14 @@
 }
 
 
-// Run every move to update the board
-
+// Runs every move to update the board
 - (void)updateUI
 {
     for (UIButton *tileButton in self.tileButtons){
         NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
         MinesweeperTile *tile = [self.game tileAtIndex:tileIndex];
         if (tile.disabled){
-            [tileButton setBackgroundColor:[UIColor yellowColor]];
-            NSLog(@"disabled button worked!");
+            [tileButton setBackgroundColor:[UIColor blueColor]];
         }
         tileButton.enabled = !tile.disabled;
     }
@@ -180,15 +160,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    [Board createBoard];
-
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

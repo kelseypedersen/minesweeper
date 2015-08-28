@@ -90,7 +90,7 @@
         // And for all buttons still enabled
         if (tileButton.enabled){
             if (![[self.game tileAtIndex:tileButtonIndex] isEqual: @"X"]){
-                [self disableBoard:tileButton];
+//                [self disableBoard:tileButton];
             }
         }
     }
@@ -111,24 +111,24 @@
 }
 
 
-- (void)disableBoard:(UIButton *)tile{
-    [tile setTitle:[NSString stringWithFormat:@"X"] forState:UIControlStateNormal];
-    for (UIButton *tileButton in self.tileButtons){
-        if (tileButton.enabled == NO){
-            
-        } else {
-            tileButton.enabled = NO;
-        }
-        NSLog(@"tile button: %@", tileButton);
-        
-        NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
-        Tile *tile = [self.game tileAtIndex:tileIndex];
-        [tileButton setTitle:[NSString stringWithFormat:@"%@", tile] forState:UIControlStateNormal];
-        [tileButton setBackgroundColor:[UIColor grayColor]];
-        [self.validateLabel setBackgroundImage:[self disableBoardValidateImageForGame] forState:UIControlStateNormal];
-    }
-}
-         
+//- (void)disableBoard:(UIButton *)tile{
+//    [tile setTitle:[NSString stringWithFormat:@"X"] forState:UIControlStateNormal];
+//    for (UIButton *tileButton in self.tileButtons){
+//        if (tileButton.enabled == NO){
+//            
+//        } else {
+//            tileButton.enabled = NO;
+//        }
+//        NSLog(@"tile button: %@", tileButton);
+//        
+//        NSInteger tileIndex = [self.tileButtons indexOfObject:tileButton];
+//        Tile *tile = [self.game tileAtIndex:tileIndex];
+//        [tileButton setTitle:[NSString stringWithFormat:@"%@", tile] forState:UIControlStateNormal];
+//        [tileButton setBackgroundColor:[UIColor grayColor]];
+//        [self.validateLabel setBackgroundImage:[self disableBoardValidateImageForGame] forState:UIControlStateNormal];
+//    }
+//}
+
 - (UIImage *)disableBoardValidateImageForGame {
     return [UIImage imageNamed:@"smiley-face-dead"];
 }

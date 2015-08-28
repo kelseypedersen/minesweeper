@@ -108,28 +108,9 @@
 {
     NSUInteger tileIndex = [self.tileButtons indexOfObject:sender];
     
-    // Outcome #1: Clicked on a mine >> End game
-    if ([self.game chooseTileAtIndex:tileIndex] == YES){
-        [self disableBoard:sender];
-    }
+    [self.game chooseTileAtIndex:tileIndex];
     
-    // Outcome #2: Clicked on a tile w/ no surrounding mines >> Disable surrounding mines
-    else if ([self.game surroundingMines:tileIndex] == 0){
-        [self.game disableSurroundingMines:tileIndex];
-        [sender setBackgroundColor:[UIColor grayColor]];
-        
-    // Outcome #3: Clicked on a tile w/ surrounding mines >> Show # of mines surrounding on tile
-    } else {
-        [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
-        NSLog(@"# surrounding mines: %d", [self.game surroundingMines:tileIndex]);
-        [sender setBackgroundColor:[UIColor grayColor]];
-    }
-    
-//    [NSTimer scheduledTimerWithTimeInterval:12.0f target:self selector:@selector(timerLabel:) userInfo:nil repeats:NO];
-//    
-//    NSTimer *time = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timerLabel:) userInfo:nil repeats:NO];
-//    NSInteger countdown = [time fireDate];
-    
+    [sender setTitle:[NSString stringWithFormat:@"%d", [self.game surroundingMines:tileIndex]] forState:UIControlStateNormal];
     
     [self updateUI];
 

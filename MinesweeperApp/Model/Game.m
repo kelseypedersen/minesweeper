@@ -32,23 +32,25 @@
 // Counts the surrounding mines to the pressed tile button
 // Returns the mine count
 
-- (BOOL)chooseTileAtIndex:(NSUInteger)index
+- (void)chooseTileAtIndex:(NSUInteger)index
 {
     MinesweeperTile *tile = [self tileAtIndex:index];
     
+    // Outcome #1: Clicked on a mine >> End game
+    
     if ([tile.mine isEqual: @"X"]){
-        return YES;
+        [self disableBoard];
+    }
+    // Outcome #2: Clicked on a tile w/ no surrounding mines >> Disable surrounding mines
+    
+    else if ([self surroundingMines:index] == 0) {
+        [self disableSurroundingMines:index];
+    }
+    // Outcome #3: Clicked on a tile w/ surrounding mines >> Show # of mines surrounding on tile
+    
+    else {
 
-//       [self shouldDisableGame];
-        
-        // deactivate game
-        // show all @"X"s
-        // for loop through the board
-    } else {
-        if ([self surroundingMines:index] == 0){
-//            [self inactivateAllSurroundingMines:index];
-        }
-        return NO;
+        // need to figure out how to display on the tiles now
     }
 }
 
@@ -152,7 +154,8 @@
 
 
 
-- (void)disableBoard:(Tile *)tile{
+- (void)disableBoard
+{
     for (Tile *tile in self.tiles){
         if (tile.disabled == NO){
             tile.disabled = YES;

@@ -52,7 +52,6 @@
         randomTile = self.tiles[index];
         [self.tiles removeObjectAtIndex:index];
     }
-    NSLog(@"tiles array %@", self.tiles);
     return randomTile;
 }
 

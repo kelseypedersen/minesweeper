@@ -58,56 +58,48 @@
         MinesweeperTile *leftTile = [self tileAtIndex:(index - 1)];
         if ([leftTile.mine isEqualToString: @"X"]){
             mineCount += 1;
-            NSLog(@"left");
         }
     }
     if ((index + 1) % 8 != 0){
         MinesweeperTile *rightTile = [self tileAtIndex:(index + 1)];
         if ([rightTile.mine isEqualToString:@"X"]){
             mineCount += 1;
-            NSLog(@"right");
         }
     }
     if (index >= 8){
         MinesweeperTile *topTile = [self tileAtIndex:(index - 8)];
         if ([topTile.mine isEqualToString:@"X"]){
             mineCount += 1;
-            NSLog(@"top");
         }
     }
     if (index <= 55){
         MinesweeperTile *bottomTile = [self tileAtIndex:(index + 8)];
         if ([bottomTile.mine isEqualToString:@"X"]){
             mineCount += 1;
-            NSLog(@"bottom");
         }
     }
     if ((index >= 9) && (index % 8 != 0)){
         MinesweeperTile *topLeft = [self tileAtIndex:(index - 9)];
         if ([topLeft.mine isEqualToString:@"X"]){
             mineCount += 1;
-            NSLog(@"top left");
         }
     }
     if ((index >= 8) && ((index + 1) % 8 != 0)){
         MinesweeperTile *topRight = [self tileAtIndex:(index - 7)];
         if ([topRight.mine isEqualToString:@"X"]){
             mineCount += 1;
-            NSLog(@"top right");
         }
     }
     if ((index <= 55) && (index % 8 != 0)){
         MinesweeperTile *bottomLeft = [self tileAtIndex:(index + 7)];
         if ([bottomLeft.mine isEqualToString:@"X"]){
             mineCount += 1;
-            NSLog(@"bottom left");
         }
     }
     if ((index <= 53) && (index + 1) % 8 != 0){
         MinesweeperTile *bottomRight = [self tileAtIndex:(index + 9)];
         if ([bottomRight.mine isEqualToString:@"X"]){
             mineCount += 1;
-            NSLog(@"bottom right");
         }
     }
     return mineCount;
@@ -165,13 +157,22 @@
 - (void)validateTiles{
     for (MinesweeperTile *tile in self.tiles){
         if ((tile.disabled != NO) && ([tile.mine isEqual: @"X"])){
-            NSLog(@"all correct!");
         } else {
             [self disableBoard];
         }
     }
 }
 
+
+- (void)cheat{
+    for (MinesweeperTile *tile in self.tiles){
+        if ((tile.disabled == NO) && ([tile.mine isEqual: @"X"])){
+            for (int i = 0; i < (arc4random() % 4); i++){
+                tile.disabled = YES;
+            }
+        }
+    }
+}
 
 
 
@@ -190,8 +191,6 @@
     if (self){
         for (int i = 0; i < count; i++){
             Tile *tile = [board drawRandomTile];
-            // Draw random tile should be returning an object, not a string
-            NSLog(@"TILE %@", tile);
             if (tile){
                 [self.tiles addObject:tile];
             } else {

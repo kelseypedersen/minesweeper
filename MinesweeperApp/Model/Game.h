@@ -24,6 +24,7 @@
 - (void)disableSurroundingMines:(NSInteger)index;
 
 - (void)validateTiles;
-
+- (NSInteger)currentMines;
+- (void)cheat;
 
 @end

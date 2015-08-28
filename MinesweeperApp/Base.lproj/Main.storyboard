@@ -761,6 +761,9 @@
                                         <state key="normal" title="Hint">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cheatButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GiS-Q2-6ta"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89599116160000003" green="0.89599116160000003" blue="0.89599116160000003" alpha="1" colorSpace="calibratedRGB"/>

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MinesweeperApp/Model/Game.m"
-            timestampString = "462444349.120945"
+            timestampString = "462446968.545026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-initWithTileCount:usingBoard:"
             landmarkType = "5">
          </BreakpointContent>

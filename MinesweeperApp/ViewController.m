@@ -23,7 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *validateLabel;
 
 
-//- (IBAction)validateButton;
+- (IBAction)validateButton;
+- (IBAction)cheatButton;
 
 - (IBAction)tilePressed:(UIButton *)sender;
 
@@ -35,7 +36,6 @@
 
 - (Board *)createBoard
 {
-    NSLog(@"view controller - create board method");
     return nil;
 }
 
@@ -88,18 +88,12 @@
 # pragma mark Validate
 
 - (IBAction)validateButton {
-    
     [self.game validateTiles];
-    
-//    for (UIButton *tileButton in self.tileButtons){
-//        NSUInteger tileButtonIndex = [self.tileButtons indexOfObject:tileButton];
-//        // And for all buttons still enabled
-//        if (tileButton.enabled){
-//            if (![[self.game tileAtIndex:tileButtonIndex] isEqual: @"X"]){
-////                [self disableBoard:tileButton];
-//            }
-//        }
-//    }
+}
+
+- (IBAction)cheatButton {
+    [self.game cheat];
+    [self updateUI];
 }
 
 
@@ -138,6 +132,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

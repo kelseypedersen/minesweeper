@@ -36,8 +36,6 @@
 }
 
 
-// Not sure if I need these totalGamePieces now
-
 + (NSArray *)totalGamePieces {
     return @[@"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"X", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O", @"O"];
 }
@@ -53,7 +51,6 @@
 {
     return [NSString stringWithFormat:@"%@", self.mine];
 }
-
 
 
 @end

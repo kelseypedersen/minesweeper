@@ -26,8 +26,6 @@ const int COUNT = 64;
       for (NSString *mine in [MinesweeperTile totalGamePieces]){
             MinesweeperTile *tile = [[MinesweeperTile alloc]init];
                 tile.mine = mine;
-                NSLog(@"TILE IN BOARD: %@", tile);
-                NSLog(@"TILE IN BOARD WITH MINE: %@", tile.mine);
             [self addTile:tile];
         }
     }

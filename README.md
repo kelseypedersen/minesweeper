@@ -1,2 +1,2 @@
 # minesweeper
-Thumbtack Coding Challenge August 2015
+August 2015
